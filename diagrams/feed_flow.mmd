@@ -1,0 +1,75 @@
+sequenceDiagram
+    autonumber
+    participant Client as Client (Postman/UI/TestClient)
+    participant API as FastAPI Router (camera_api.py)
+    participant Validator as Pydantic Models (schemas.py)
+    participant Service as CameraService (camera_service.py)
+    participant Repository as InMemory Repo (memory_repo.py)
+
+    %% Add Feed
+    Client->>API: POST /cameras/{camera_id}/feeds
+    API->>Validator: Validate VideoFeedSetup
+    Validator-->>API: Valid payload
+    API->>Service: add_feed()
+    Service->>Repository: get_camera()
+    alt Camera missing
+        Repository-->>Service: None
+        Service-->>API: NotFoundError
+        API-->>Client: 404 Not Found
+    else Found
+        Service->>Service: Check duplicate protocol+port+path
+        alt Duplicate feed
+            Service-->>API: ConflictError
+            API-->>Client: 409 Conflict
+        else Unique
+            Service->>Repository: add_feed()
+            Repository-->>Service: VideoFeedInfo
+            Service-->>API: FeedInfo
+            API-->>Client: 200 OK
+        end
+    end
+
+    %% List Feeds
+    Client->>API: GET /cameras/{camera_id}/feeds?protocol=&port=&q=
+    API->>Service: list_feeds()
+    Service->>Repository: get_camera()
+    alt Missing camera
+        Repository-->>Service: None
+        Service-->>API: NotFoundError
+        API-->>Client: 404 Not Found
+    else Exists
+        Repository-->>Service: CameraDetails
+        Service->>Service: Apply protocol/port/search filters
+        Service-->>API: Filtered feeds
+        API-->>Client: 200 OK
+    end
+
+    %% Update Feed
+    Client->>API: PATCH /cameras/{camera_id}/feeds/{feed_id}
+    API->>Validator: Validate FeedUpdate
+    Validator-->>API: Valid
+    API->>Service: update_feed()
+    Service->>Repository: update_feed()
+    alt Feed or camera missing
+        Repository-->>Service: None
+        Service-->>API: NotFoundError
+        API-->>Client: 404 Not Found
+    else Updated
+        Repository-->>Service: VideoFeedInfo
+        Service-->>API: Updated feed
+        API-->>Client: 200 OK
+    end
+
+    %% Delete Feed
+    Client->>API: DELETE /cameras/{camera_id}/feeds/{feed_id}
+    API->>Service: remove_feed()
+    Service->>Repository: remove_feed()
+    alt Feed missing
+        Repository-->>Service: False
+        Service-->>API: NotFoundError
+        API-->>Client: 404 Not Found
+    else Removed
+        Repository-->>Service: True
+        Service-->>API: Success
+        API-->>Client: 200 OK
+    end

@@ -1,0 +1,428 @@
+{
+	"info": {
+		"_postman_id": "8ed76d31-0f38-481f-8b57-b89a15450869",
+		"name": "Camera Management",
+		"description": "I have added the endpoints of camera management service for testing and documenting.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47666216",
+		"_collection_link": "https://ananya-n-4168995.postman.co/workspace/2224cd7e-3d7a-4313-ad50-76c287421466/collection/47666216-8ed76d31-0f38-481f-8b57-b89a15450869?action=share&source=collection_link&creator=47666216"
+	},
+	"item": [
+		{
+			"name": "cameras",
+			"item": [
+				{
+					"name": "post a camera",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status is 200\", () => pm.response.to.have.status(200));\r",
+									"const json = pm.response.json();\r",
+									"if (json.camera_id) {\r",
+									"    pm.environment.set(\"camera_id\", json.camera_id);\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"camera_name\": \"TestCam\",\r\n    \"camera_model\": \"ModelX\",\r\n    \"network_setup\": {\r\n        \"ip_address\": \"192.168.0.10\"\r\n    },\r\n    \"image_settings\": {\r\n        \"brightness\": 50,\r\n        \"contrast\": 50,\r\n        \"saturation\": 50\r\n    },\r\n    \"available_feeds\": [\r\n        {\r\n            \"feed_protocol\": \"rtsp\",\r\n            \"feed_port\": 554,\r\n            \"feed_path\": \"/main\"\r\n        }\r\n    ]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/cameras/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cameras",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get camera by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/cameras/de59f399-6a81-452a-b0b8-23d64cdfeced",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cameras",
+								"de59f399-6a81-452a-b0b8-23d64cdfeced"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete camera by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/cameras/5a94c054-318c-43f5-82f0-d11db8aef4fd",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cameras",
+								"5a94c054-318c-43f5-82f0-d11db8aef4fd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update camera by id",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"camera_name\": \"UpdatedCam\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/cameras/de59f399-6a81-452a-b0b8-23d64cdfeced",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cameras",
+								"de59f399-6a81-452a-b0b8-23d64cdfeced"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list the cameras pag+filter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/cameras/?model=ModelX&page=1&page_size=10\n",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cameras",
+								""
+							],
+							"query": [
+								{
+									"key": "model",
+									"value": "ModelX"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "page_size",
+									"value": "10\n"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post camera",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"camera_name\": \"Cam2\",\r\n    \"camera_model\": \"ModeV2\",\r\n    \"network_setup\": {\r\n        \"ip_address\": \"192.168.0.10\"\r\n    },\r\n    \"image_settings\": {\r\n        \"brightness\": 60,\r\n        \"contrast\": 70,\r\n        \"saturation\": 80\r\n    }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/cameras/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cameras",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all camera",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/cameras/?page=1&page_size=10",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cameras",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "page_size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post camera3",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"camera_name\": \"Sony\",\r\n    \"camera_model\": \"ModeF2\",\r\n    \"network_setup\": {\r\n        \"ip_address\": \"192.168.0.20\"\r\n    },\r\n    \"image_settings\": {\r\n        \"brightness\": 80,\r\n        \"contrast\": 67,\r\n        \"saturation\": 100\r\n    },\r\n    \"available_feeds\": [\r\n        {\r\n            \"feed_protocol\": \"rtsp\",\r\n            \"feed_port\": 554,\r\n            \"feed_path\": \"/main\"\r\n        }\r\n    ]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/cameras/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cameras",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "feeds",
+			"item": [
+				{
+					"name": "add stream to camera",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"feed_protocol\": \"rtsp\",\r\n  \"feed_port\": 9000,\r\n  \"feed_path\": \"/new\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/cameras/bee8411d-6bec-4d77-9bfd-89b4860e9f54/feeds",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cameras",
+								"bee8411d-6bec-4d77-9bfd-89b4860e9f54",
+								"feeds"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update feed",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"feed_port\": 9999 }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/cameras/bee8411d-6bec-4d77-9bfd-89b4860e9f54/feeds/495adf99-5ca2-4b1b-9bd3-c349e82eb089",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cameras",
+								"bee8411d-6bec-4d77-9bfd-89b4860e9f54",
+								"feeds",
+								"495adf99-5ca2-4b1b-9bd3-c349e82eb089"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add other feed",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"feed_protocol\": \"http\",\r\n  \"feed_port\": 9000,\r\n  \"feed_path\": \"/new\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/cameras/bee8411d-6bec-4d77-9bfd-89b4860e9f54/feeds",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cameras",
+								"bee8411d-6bec-4d77-9bfd-89b4860e9f54",
+								"feeds"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete feed",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/cameras/bee8411d-6bec-4d77-9bfd-89b4860e9f54/feeds/ff45b4bb-a4d5-48d3-ab50-8c83dd9cc8d8",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cameras",
+								"bee8411d-6bec-4d77-9bfd-89b4860e9f54",
+								"feeds",
+								"ff45b4bb-a4d5-48d3-ab50-8c83dd9cc8d8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hearthbeat for status",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/cameras/de59f399-6a81-452a-b0b8-23d64cdfeced/heartbeat",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cameras",
+								"de59f399-6a81-452a-b0b8-23d64cdfeced",
+								"heartbeat"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/cameras/de59f399-6a81-452a-b0b8-23d64cdfeced/status",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cameras",
+								"de59f399-6a81-452a-b0b8-23d64cdfeced",
+								"status"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

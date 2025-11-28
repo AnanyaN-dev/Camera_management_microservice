@@ -1,0 +1,102 @@
+sequenceDiagram
+    autonumber
+    participant Client as Client (Postman/UI/TestClient)
+    participant API as FastAPI Router (camera_api.py)
+    participant Validator as Pydantic Models (schemas.py)
+    participant Service as CameraService (camera_service.py)
+    participant Repository as InMemory Repo (memory_repo.py)
+
+    %% Add Camera
+    %% is a comment in Mermaid diagrams.
+    Client->>API: POST /cameras/
+    API->>Validator: Validate NewCameraData
+    Validator-->>API: Validated payload
+    API->>Service: add_camera(data)
+    Service->>Repository: add_camera()
+    alt Duplicate IP or Name+Model %%alt acts as if/else block in mermaid
+        Service-->>API: ConflictError
+        API-->>Client: 409 Conflict
+    else Added
+        Repository-->>Service: CameraDetails
+        Service-->>API: CameraDetails
+        API-->>Client: 200 OK
+    end
+
+    %% Get Camera
+    Client->>API: GET /cameras/{camera_id}
+    API->>Service: get_camera(camera_id)
+    Service->>Repository: get_camera()
+    alt Not found
+        Repository-->>Service: None
+        Service-->>API: NotFoundError
+        API-->>Client: 404 Not Found
+    else Found
+        Repository-->>Service: CameraDetails
+        Service-->>API: CameraDetails
+        API-->>Client: 200 OK
+    end
+
+    %% List Cameras
+    Client->>API: GET /cameras/?model=&ip_from=&ip_to=&online=&page=&page_size=
+    API->>Service: list_cameras(filters)
+    Service->>Repository: list_cameras()
+    Repository-->>Service: Camera list
+    Service->>Service: Apply model/IP/online filters + pagination
+    Service-->>API: Filtered list
+    API-->>Client: 200 OK
+
+    %% Update Camera
+    Client->>API: PATCH /cameras/{camera_id}
+    API->>Validator: Validate CameraUpdate
+    Validator-->>API: Valid
+    API->>Service: update_camera()
+    Service->>Repository: update_camera()
+    alt Not found
+        Repository-->>Service: None
+        Service-->>API: NotFoundError
+        API-->>Client: 404 Not Found
+    else Updated
+        Repository-->>Service: CameraDetails
+        Service-->>API: Updated Camera
+        API-->>Client: 200 OK
+    end
+
+    %% Delete Camera
+    Client->>API: DELETE /cameras/{camera_id}
+    API->>Service: remove_camera()
+    Service->>Repository: remove_camera()
+    alt Not found
+        Repository-->>Service: False
+        Service-->>API: NotFoundError
+        API-->>Client: 404 Not Found
+    else Removed
+        Repository-->>Service: True
+        Service-->>API: Success message
+        API-->>Client: 200 OK
+    end
+
+    %% Heartbeat
+    Client->>API: POST /cameras/{camera_id}/heartbeat
+    API->>Service: heartbeat()
+    Service->>Repository: get_camera()
+    alt Not found
+        Repository-->>Service: None
+        Service-->>API: NotFoundError
+        API-->>Client: 404 Not Found
+    else Found
+        Service-->>API: Update last_checkin
+        API-->>Client: 200 OK
+    end
+
+    %% Status
+    Client->>API: GET /cameras/{camera_id}/status
+    API->>Service: is_online()
+    Service->>Repository: get_camera()
+    alt Camera missing
+        Repository-->>Service: None
+        Service-->>API: NotFoundError
+        API-->>Client: 404 Not Found
+    else Exists
+        Service-->>API: Return online/offline + last_checkin
+        API-->>Client: 200 OK
+    end
