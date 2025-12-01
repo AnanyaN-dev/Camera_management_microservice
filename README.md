@@ -73,8 +73,10 @@ Update camera,
 Delete camera,
 Send heartbeat,
 Check online/offline status.
+```
 
 ### Feed Operations:
+```
 Add a feed to a camera,
 List feeds with optional filters,
 Update feed,
