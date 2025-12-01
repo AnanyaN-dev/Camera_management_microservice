@@ -11,6 +11,7 @@ pip install -r requirements.txt
 Used mypy , black and isort code formatters for clean coding practice.
 
 ## Project Structure
+
 camera_microservice/
 │
 ├── app/
@@ -44,7 +45,7 @@ camera_microservice/
 │
 ├── docs/
 │   └── postman/
-│        └── camera_management_collection.json
+│       └── camera_management_collection.json
 │
 ├── diagrams/
 │   ├── camera_flow.mmd
