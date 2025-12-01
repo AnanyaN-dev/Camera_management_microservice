@@ -5,13 +5,14 @@ Important: This project uses an in-memory repository for storage. There is no fi
 Have written unit tests to test the functionalities using pytest.
 
 ## Requirements
-Python 3.14
+Python 3.14.
 Install dependencies:
-pip install -r requirements.txt 
-Used mypy , black and isort code formatters for clean coding practice.
+pip install -r requirements.txt AND 
+Used mypy , black and isort code formatters for clean coding practices.
 
 ## Project Structure
 
+```
 camera_microservice/
 │
 ├── app/
@@ -56,15 +57,16 @@ camera_microservice/
 ├── .gitignore
 ├── requirements.txt
 └── README.md
+```
 
 ## What this service supports:
 ### Camera Operations :
-Add a camera
-Get camera by id
-List cameras with filtering and pagination
-Update camera
-Delete camera
-Send heartbeat
+Add a camera,
+Get camera by id,
+List cameras with filtering and pagination,
+Update camera,
+Delete camera,
+Send heartbeat,
 Check online/offline status
 
 ### Feed Operations:
