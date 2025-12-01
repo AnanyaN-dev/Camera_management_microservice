@@ -13,29 +13,29 @@ Used mypy , black and isort code formatters for clean coding practice.
 ## Project Structure
 camera_microservice/
 │
-├── app/                               
-│   ├── api/                            
-│   │     └── camera_api.py             
+├── app/
+│   ├── api/
+│   │   └── camera_api.py
 │   │
-│   ├── service/                        
-│   │     └── camera_service.py         
+│   ├── service/
+│   │   └── camera_service.py
 │   │
-│   ├── repository/                     
-│   │     ├── interface.py              
-│   │     └── memory_repo.py            
+│   ├── repository/
+│   │   ├── interface.py
+│   │   └── memory_repo.py
 │   │
-│   ├── models/                         
-│   │     └── schemas.py                
+│   ├── models/
+│   │   └── schemas.py
 │   │
-│   ├── core/                           
-│   │     ├── config.py                 
-│   │     ├── exceptions.py             
-│   │     └── logging.py                
+│   ├── core/
+│   │   ├── config.py
+│   │   ├── exceptions.py
+│   │   └── logging.py
 │   │
-│   └── main.py                         
+│   └── main.py
 │       └── __init__.py
 │
-├── tests/                              
+├── tests/
 │   ├── __init__.py
 │   ├── conftest.py
 │   ├── test_repository.py
@@ -49,7 +49,7 @@ camera_microservice/
 ├── diagrams/
 │   ├── camera_flow.mmd
 │   ├── feed_flow.mmd
-│   └── Camera Operations Flow.jpg 
+│   └── Camera Operations Flow.jpg
 │
 ├── .env
 ├── .gitignore
