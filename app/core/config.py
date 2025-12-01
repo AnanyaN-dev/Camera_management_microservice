@@ -1,10 +1,10 @@
 # This file loads configuration settings for the entire application.
-# Why keep a separate config file?
+# Why keep a separate config file
 # → So that important constants (timeouts, default ports, etc.)
 #   are all in ONE place.
 # → Easier to change values without touching business logic.
 #
-# We load values from a `.env` file using python-dotenv.
+# We load values from a `.env` file using python-dotenv module.
 # If the value is not present in `.env`, we use the default fallback.
 
 import os
