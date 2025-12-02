@@ -29,6 +29,8 @@ class CameraService:
     # ADD CAMERA
     def add_camera(self, data: NewCameraData) -> CameraDetails:
 
+        logger.info("[SERVICE] Adding new camera")  # (ADDED COMMENT)
+
         # RULE 1: Prevent duplicate camera IP addresses
         for cam in self.repo.list_cameras():
             if cam.network_setup.ip_address == data.network_setup.ip_address:
@@ -49,22 +51,35 @@ class CameraService:
                 raise ConflictError("A camera with same name and model already exists.")
 
         cam = self.repo.add_camera(data)
-        logger.info(f"[ADD CAMERA] Camera created with ID={cam.camera_id}")
+
+        cam.last_known_checkin = datetime.now(timezone.utc)  # (ADDED HEARTBEAT HERE)
+        cam.last_updated_on = datetime.now(timezone.utc)  # (ADDED HEARTBEAT HERE)
+        self.repo._store[cam.camera_id] = cam  # (ADDED HEARTBEAT HERE)
+
+        logger.info(
+            f"[ADD CAMERA] Camera created with ID={cam.camera_id}"
+        )  # (ADDED COMMENT)
         return cam
 
     # GET CAMERA
     def get_camera(self, camera_id: UUID) -> CameraDetails:
+        logger.info(f"[SERVICE] Getting camera ID={camera_id}")  # (ADDED COMMENT)
+
         cam = self.repo.get_camera(camera_id)
         if cam is None:
-            logger.warning(f"[GET CAMERA] Not found: {camera_id}")
+            logger.warning(f"[GET CAMERA] Not found: {camera_id}")  # (ADDED COMMENT)
             raise NotFoundError("Camera not found.")
         return cam
 
     # DELETE CAMERA
     def remove_camera(self, camera_id: UUID) -> bool:
+        logger.info(f"[SERVICE] Removing camera ID={camera_id}")  # (ADDED COMMENT)
+
         removed = self.repo.remove_camera(camera_id)
         if not removed:
-            logger.warning(f"[DELETE CAMERA] Camera not found: {camera_id}")
+            logger.warning(
+                f"[DELETE CAMERA] Camera not found: {camera_id}"
+            )  # (ADDED COMMENT)
             raise NotFoundError("Camera not found.")
         return True
 
@@ -78,6 +93,8 @@ class CameraService:
         page: int = 1,
         page_size: int = 20,
     ):
+
+        logger.info("[SERVICE] Listing cameras with filters")  # (ADDED COMMENT)
 
         import ipaddress
 
@@ -107,63 +124,122 @@ class CameraService:
 
         # FILTER 3 → online/offline
         if online is not None:
-            result = []
-            for cam in cameras:
-                if self.is_online(cam.camera_id) == online:
-                    result.append(cam)
-            cameras = result
+            logger.info("[SERVICE] Filtering online/offline cameras")  # (ADDED COMMENT)
+            cameras = [c for c in cameras if self.is_online(c.camera_id) == online]
 
         # PAGINATION
         start = (page - 1) * page_size
         end = start + page_size
+        logger.info(
+            f"[SERVICE] Returning {len(cameras[start:end])} cameras"
+        )  # (ADDED COMMENT)
         return cameras[start:end]
 
     # UPDATE CAMERA
-    def update_camera(self, camera_id: UUID, updates: CameraUpdate):
+    def update_camera(self, camera_id: UUID, updates: CameraUpdate) -> CameraDetails:
+        logger.info(f"[SERVICE] Updating camera ID={camera_id}")  # (ADDED COMMENT)
+
         cam = self.repo.update_camera(camera_id, updates)
         if cam is None:
+            logger.warning(
+                "[SERVICE] Update failed — camera not found"
+            )  # (ADDED COMMENT)
             raise NotFoundError("Camera not found.")
+
+        cam.last_known_checkin = datetime.now(timezone.utc)  # (ADDED HEARTBEAT HERE)
+        cam.last_updated_on = datetime.now(timezone.utc)  # (ADDED HEARTBEAT HERE)
+        self.repo._store[camera_id] = cam  # (ADDED HEARTBEAT HERE)
+
         return cam
 
     # ADD FEED
     def add_feed(self, camera_id: UUID, feed_data: VideoFeedSetup) -> VideoFeedInfo:
+        logger.info(
+            f"[SERVICE] Adding feed to camera ID={camera_id}"
+        )  # (ADDED COMMENT)
+
         cam = self.repo.get_camera(camera_id)
         if cam is None:
+            logger.warning(
+                "[SERVICE] Cannot add feed — camera not found"
+            )  # (ADDED COMMENT)
             raise NotFoundError("Camera not found.")
 
-        # RULE 1 → Prevent duplicate (protocol + port) for same camera
+        # RULE 1 → Prevent duplicate (protocol + port)
         for f in cam.available_feeds:
             if (
                 f.feed_protocol == feed_data.feed_protocol
                 and f.feed_port == feed_data.feed_port
             ):
+                logger.warning(
+                    "[SERVICE] Feed duplicate protocol+port"
+                )  # (ADDED COMMENT)
                 raise ConflictError(
                     "A feed with same protocol and port already exists for this camera."
                 )
 
-        # RULE 2 → Prevent duplicate port across ALL cameras
+        # RULE 2 → Prevent duplicate port globally
         for other in self.repo.list_cameras():
             for f in other.available_feeds:
                 if f.feed_port == feed_data.feed_port:
+                    logger.warning(
+                        "[SERVICE] Feed port conflict with another camera"
+                    )  # (ADDED COMMENT)
                     raise ConflictError(
                         f"Feed port {feed_data.feed_port} already used by another camera."
                     )
 
         new_feed = self.repo.add_feed(camera_id, feed_data)
+
+        cam.last_known_checkin = datetime.now(timezone.utc)  # (ADDED HEARTBEAT HERE)
+        cam.last_updated_on = datetime.now(timezone.utc)  # (ADDED HEARTBEAT HERE)
+        self.repo._store[camera_id] = cam  # (ADDED HEARTBEAT HERE)
+
+        logger.info("[SERVICE] Feed successfully added")  # (ADDED COMMENT)
         return new_feed
 
     # UPDATE FEED
-    def update_feed(self, camera_id: UUID, feed_id: UUID, updates: FeedUpdate):
+    def update_feed(
+        self, camera_id: UUID, feed_id: UUID, updates: FeedUpdate
+    ) -> VideoFeedInfo:
+        logger.info(f"[SERVICE] Updating feed ID={feed_id}")  # (ADDED COMMENT)
+
         updated = self.repo.update_feed(camera_id, feed_id, updates)
         if updated is None:
+            logger.warning(
+                "[SERVICE] Update feed failed — camera or feed not found"
+            )  # (ADDED COMMENT)
             raise NotFoundError("Camera or Feed not found.")
+
+        cam = self.repo.get_camera(camera_id)
+        if cam is None:
+            raise NotFoundError("Camera not found.")  # safety for mypy
+
+        cam.last_known_checkin = datetime.now(timezone.utc)  # (ADDED HEARTBEAT HERE)
+        cam.last_updated_on = datetime.now(timezone.utc)  # (ADDED HEARTBEAT HERE)
+        self.repo._store[camera_id] = cam  # (ADDED HEARTBEAT HERE)
+
         return updated
 
     # REMOVE FEED
-    def remove_feed(self, camera_id: UUID, feed_id: UUID):
+    def remove_feed(self, camera_id: UUID, feed_id: UUID) -> bool:
+        logger.info(f"[SERVICE] Removing feed ID={feed_id}")  # (ADDED COMMENT)
+
         removed = self.repo.remove_feed(camera_id, feed_id)
         if not removed:
+            logger.warning(
+                "[SERVICE] Failed to remove feed — not found"
+            )  # (ADDED COMMENT)
             raise NotFoundError("Camera or Feed not found.")
+
+        cam = self.repo.get_camera(camera_id)
+        if cam is None:
+            raise NotFoundError("Camera not found.")  # safety for mypy
+
+        cam.last_known_checkin = datetime.now(timezone.utc)  # (ADDED HEARTBEAT HERE)
+        cam.last_updated_on = datetime.now(timezone.utc)  # (ADDED HEARTBEAT HERE)
+        self.repo._store[camera_id] = cam  # (ADDED HEARTBEAT HERE)
+
         return True
 
     # LIST FEEDS
@@ -176,8 +252,15 @@ class CameraService:
         page: int = 1,
         page_size: int = 20,
     ):
+        logger.info(
+            f"[SERVICE] Listing feeds for camera ID={camera_id}"
+        )  # (ADDED COMMENT)
+
         cam = self.repo.get_camera(camera_id)
         if cam is None:
+            logger.warning(
+                "[SERVICE] Cannot list feeds — camera not found"
+            )  # (ADDED COMMENT)
             raise NotFoundError("Camera not found.")
 
         feeds = list(cam.available_feeds)
@@ -194,34 +277,61 @@ class CameraService:
 
         start = (page - 1) * page_size
         end = start + page_size
+
+        logger.info(
+            f"[SERVICE] Returning {len(feeds[start:end])} feeds"
+        )  # (ADDED COMMENT)
         return feeds[start:end]
 
     # HEARTBEAT
     def heartbeat(self, camera_id: UUID):
+        logger.info(
+            f"[SERVICE] Heartbeat received for camera ID={camera_id}"
+        )  # (ADDED COMMENT)
+
         cam = self.repo.get_camera(camera_id)
         if cam is None:
+            logger.warning(
+                "[SERVICE] Heartbeat failed — camera not found"
+            )  # (ADDED COMMENT)
             raise NotFoundError("Camera not found.")
 
         cam.last_known_checkin = datetime.now(timezone.utc)
         cam.last_updated_on = datetime.now(timezone.utc)
 
         self.repo._store[camera_id] = cam
+
+        logger.info("[SERVICE] Heartbeat updated")  # (ADDED COMMENT)
         return {"message": "Heartbeat updated"}
 
     # ONLINE STATUS
     def is_online(self, camera_id: UUID) -> bool:
+        logger.info(
+            f"[SERVICE] Checking online status for camera ID={camera_id}"
+        )  # (ADDED COMMENT)
+
         cam = self.repo.get_camera(camera_id)
         if cam is None:
+            logger.warning(
+                "[SERVICE] Cannot check status — camera not found"
+            )  # (ADDED COMMENT)
             raise NotFoundError("Camera not found.")
 
         if cam.last_known_checkin is None:
+            logger.info(
+                "[SERVICE] Camera offline — no heartbeat yet"
+            )  # (ADDED COMMENT)
             return False
 
         now = datetime.now(timezone.utc)
         diff = now - cam.last_known_checkin
 
+        # explicit logic
         if diff.total_seconds() > Config.HEARTBEAT_TIMEOUT:
+            logger.info(
+                "[SERVICE] Camera offline — heartbeat timeout"
+            )  # (ADDED COMMENT)
             return False
         else:
+            logger.info("[SERVICE] Camera online — heartbeat OK")  # (ADDED COMMENT)
             return True
-

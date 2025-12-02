@@ -17,7 +17,15 @@
 #  prints log level (INFO, WARNING, ERROR, DEBUG)
 
 import logging
+import os
 from logging.config import dictConfig
+# (ADDED COMMENT): This import is required to enable log file rotation
+from logging.handlers import RotatingFileHandler  # (ADDED COMMENT)
+
+# (ADDED) Ensure logs folder exists
+os.makedirs("logs", exist_ok=True)  # will create /logs folder
+
+LOG_FILE = "logs/app_logs.json"  # (ADDED COMMENT) log file inside /logs folder
 
 # Formatting and structure for all logs printed by the application.
 LOG_CONFIG = {
@@ -25,21 +33,40 @@ LOG_CONFIG = {
     "disable_existing_loggers": False,
     # How log messages should look
     "formatters": {
-        "default": {"format": "[%(asctime)s] %(levelname)s in %(name)s: %(message)s"}
+        "default": {"format": "[%(asctime)s] %(levelname)s in %(name)s: %(message)s"},
+        # (ADDED COMMENT): JSON formatter for structured logs written into a file
+        "json": {
+            "format": (
+                '{"time": "%(asctime)s", "level": "%(levelname)s", '
+                '"module": "%(name)s", "message": "%(message)s"}'
+            )
+        },
     },
-    # Where logs should go (for now: console/terminal)
+    # Where logs should go (console + log file)
     "handlers": {
         "console": {
             "class": "logging.StreamHandler",
             "formatter": "default",
-        }
+        },
+        # (ADDED COMMENT): This writes structured JSON logs into app_logs.json
+        "file": {
+            "class": "logging.handlers.RotatingFileHandler",
+            "formatter": "json",
+            "filename": LOG_FILE,
+            "maxBytes": 2 * 1024 * 1024,  # 2MB size per log file (ADDED COMMENT)
+            "backupCount": 3,  # keep last 3 rotated files (ADDED COMMENT)
+            "level": "INFO",
+        },
     },
     # The ROOT logger configuration:
     # → log level = INFO (you can switch to DEBUG if you want more details)
     # → all logs go to console
     "root": {
         "level": "INFO",
-        "handlers": ["console"],
+        "handlers": [
+            "console",
+            "file",  # (ADDED COMMENT): also send logs to JSON file
+        ],
     },
 }
 

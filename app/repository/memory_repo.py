@@ -40,7 +40,9 @@ class SimpleCameraMemoryStorage(CameraRepositoryInterface):
         # Value = CameraDetails object
         # _store : this is internal databse of mine
 
-        logger.debug("[REPO INIT] In-memory camera storage initialized.")
+        logger.debug(
+            "[REPO INIT] In-memory camera storage initialized."
+        )  # (ADDED COMMENT)
 
     # ADD CAMERA (CREATE)
     def add_camera(self, data: NewCameraData) -> CameraDetails:
@@ -50,12 +52,14 @@ class SimpleCameraMemoryStorage(CameraRepositoryInterface):
         Create a new camera entry with generated UUID and timestamps.
         """
 
-        camera_id = uuid4() #generate a camera id
+        logger.info("[REPO] Starting process to add new camera")  # (ADDED COMMENT)
+
+        camera_id = uuid4()  # generate a camera id
         now = datetime.now(timezone.utc)
 
         # Build feed objects WITH feed_id
         feeds_with_ids: List[VideoFeedInfo] = []
-        #data.available_feeds is initialized by Pydantic inside NewCameraData
+        # data.available_feeds is initialized by Pydantic inside NewCameraData
         for feed in data.available_feeds:
             feed_dict = feed.model_dump()
 
@@ -85,8 +89,12 @@ class SimpleCameraMemoryStorage(CameraRepositoryInterface):
         # Save inside the dictionary
         self._store[camera_id] = camera_record
 
-        logger.info(f"[REPO][ADD_CAMERA] Added camera ID={camera_id}")
-        logger.debug(f"[REPO][ADD_CAMERA] Full record: {camera_record}")
+        logger.info(
+            f"[REPO][ADD_CAMERA] Added camera ID={camera_id}"
+        )  # (ADDED COMMENT)
+        logger.debug(
+            f"[REPO][ADD_CAMERA] Full record: {camera_record}"
+        )  # (ADDED COMMENT)
 
         return camera_record
 
@@ -96,28 +104,45 @@ class SimpleCameraMemoryStorage(CameraRepositoryInterface):
         Remove a camera using its ID.
         """
 
+        logger.info(
+            f"[REPO] Request to remove camera ID={camera_id}"
+        )  # (ADDED COMMENT)
+
         if camera_id in self._store:
             del self._store[camera_id]
-            logger.info(f"[REPO][REMOVE_CAMERA] Removed camera ID={camera_id}")
+            logger.info(
+                f"[REPO][REMOVE_CAMERA] Removed camera ID={camera_id}"
+            )  # (ADDED COMMENT)
             return True
 
-        logger.debug(f"[REPO][REMOVE_CAMERA] Camera ID={camera_id} not found.")
+        logger.debug(
+            f"[REPO][REMOVE_CAMERA] Camera ID={camera_id} not found."
+        )  # (ADDED COMMENT)
         return False
 
     # GET CAMERA (READ ONE)
     def get_camera(self, camera_id: UUID) -> Optional[CameraDetails]:
+        logger.info(f"[REPO] Fetching camera ID={camera_id}")  # (ADDED COMMENT)
+
         cam = self._store.get(camera_id)
 
         if cam is None:
-            logger.debug(f"[REPO][GET_CAMERA] Camera ID={camera_id} not found.")
+            logger.debug(
+                f"[REPO][GET_CAMERA] Camera ID={camera_id} not found."
+            )  # (ADDED COMMENT)
         else:
-            logger.debug(f"[REPO][GET_CAMERA] Retrieved camera ID={camera_id}")
+            logger.debug(
+                f"[REPO][GET_CAMERA] Retrieved camera ID={camera_id}"
+            )  # (ADDED COMMENT)
 
         return cam
 
     # LIST ALL CAMERAS (READ MANY)
     def list_cameras(self) -> List[CameraDetails]:
-        logger.debug(f"[REPO][LIST_CAMERAS] Count={len(self._store)}")
+        logger.info("[REPO] Listing all cameras")  # (ADDED COMMENT)
+        logger.debug(
+            f"[REPO][LIST_CAMERAS] Count={len(self._store)}"
+        )  # (ADDED COMMENT)
         return list(self._store.values())
 
     # UPDATE CAMERA (PATCH)
@@ -125,9 +150,15 @@ class SimpleCameraMemoryStorage(CameraRepositoryInterface):
         self, camera_id: UUID, updates: CameraUpdate
     ) -> Optional[CameraDetails]:
 
+        logger.info(
+            f"[REPO] Request to update camera ID={camera_id}"
+        )  # (ADDED COMMENT)
+
         cam = self._store.get(camera_id)
         if cam is None:
-            logger.debug(f"[REPO][UPDATE_CAMERA] Camera ID={camera_id} not found.")
+            logger.debug(
+                f"[REPO][UPDATE_CAMERA] Camera ID={camera_id} not found."
+            )  # (ADDED COMMENT)
             return None
 
         changed = False
@@ -151,12 +182,16 @@ class SimpleCameraMemoryStorage(CameraRepositoryInterface):
         if changed:
             cam.last_updated_on = datetime.now(timezone.utc)
             self._store[camera_id] = cam
-            logger.info(f"[REPO][UPDATE_CAMERA] Updated camera ID={camera_id}")
-            logger.debug(f"[REPO][UPDATE_CAMERA] Updated record: {cam}")
+            logger.info(
+                f"[REPO][UPDATE_CAMERA] Updated camera ID={camera_id}"
+            )  # (ADDED COMMENT)
+            logger.debug(
+                f"[REPO][UPDATE_CAMERA] Updated record: {cam}"
+            )  # (ADDED COMMENT)
         else:
             logger.debug(
                 f"[REPO][UPDATE_CAMERA] No fields updated for camera ID={camera_id}"
-            )
+            )  # (ADDED COMMENT)
 
         return cam
 
@@ -165,9 +200,13 @@ class SimpleCameraMemoryStorage(CameraRepositoryInterface):
         self, camera_id: UUID, feed: VideoFeedSetup
     ) -> Optional[VideoFeedInfo]:
 
+        logger.info(f"[REPO] Adding feed to camera ID={camera_id}")  # (ADDED COMMENT)
+
         cam = self._store.get(camera_id)
         if cam is None:
-            logger.debug(f"[REPO][ADD_FEED] Camera ID={camera_id} not found.")
+            logger.debug(
+                f"[REPO][ADD_FEED] Camera ID={camera_id} not found."
+            )  # (ADDED COMMENT)
             return None
 
         feed_dict = feed.model_dump()
@@ -185,7 +224,7 @@ class SimpleCameraMemoryStorage(CameraRepositoryInterface):
 
         logger.info(
             f"[REPO][ADD_FEED] Added feed ID={new_feed.feed_id} to camera ID={camera_id}"
-        )
+        )  # (ADDED COMMENT)
         return new_feed
 
     # UPDATE FEED
@@ -193,9 +232,15 @@ class SimpleCameraMemoryStorage(CameraRepositoryInterface):
         self, camera_id: UUID, feed_id: UUID, updates: FeedUpdate
     ) -> Optional[VideoFeedInfo]:
 
+        logger.info(
+            f"[REPO] Updating feed ID={feed_id} for camera ID={camera_id}"
+        )  # (ADDED COMMENT)
+
         cam = self._store.get(camera_id)
         if cam is None:
-            logger.debug(f"[REPO][UPDATE_FEED] Camera ID={camera_id} not found.")
+            logger.debug(
+                f"[REPO][UPDATE_FEED] Camera ID={camera_id} not found."
+            )  # (ADDED COMMENT)
             return None
 
         for idx, feed in enumerate(cam.available_feeds):
@@ -216,21 +261,29 @@ class SimpleCameraMemoryStorage(CameraRepositoryInterface):
 
                 logger.info(
                     f"[REPO][UPDATE_FEED] Updated feed ID={feed_id} for camera ID={camera_id}"
-                )
-                logger.debug(f"[REPO][UPDATE_FEED] Updated record: {feed}")
+                )  # (ADDED COMMENT)
+                logger.debug(
+                    f"[REPO][UPDATE_FEED] Updated record: {feed}"
+                )  # (ADDED COMMENT)
                 return feed
 
         logger.debug(
             f"[REPO][UPDATE_FEED] Feed ID={feed_id} not found for camera ID={camera_id}"
-        )
+        )  # (ADDED COMMENT)
         return None
 
     # REMOVE FEED
     def remove_feed(self, camera_id: UUID, feed_id: UUID) -> bool:
 
+        logger.info(
+            f"[REPO] Removing feed ID={feed_id} from camera ID={camera_id}"
+        )  # (ADDED COMMENT)
+
         cam = self._store.get(camera_id)
         if cam is None:
-            logger.debug(f"[REPO][REMOVE_FEED] Camera ID={camera_id} not found.")
+            logger.debug(
+                f"[REPO][REMOVE_FEED] Camera ID={camera_id} not found."
+            )  # (ADDED COMMENT)
             return False
 
         for idx, feed in enumerate(cam.available_feeds):
@@ -242,20 +295,26 @@ class SimpleCameraMemoryStorage(CameraRepositoryInterface):
 
                 logger.info(
                     f"[REPO][REMOVE_FEED] Removed feed ID={feed_id} from camera ID={camera_id}"
-                )
+                )  # (ADDED COMMENT)
                 return True
 
         logger.debug(
             f"[REPO][REMOVE_FEED] Feed ID={feed_id} not found for camera ID={camera_id}"
-        )
+        )  # (ADDED COMMENT)
         return False
 
     # GET FEED
     def get_feed(self, camera_id: UUID, feed_id: UUID) -> Optional[VideoFeedInfo]:
 
+        logger.info(
+            f"[REPO] Getting feed ID={feed_id} for camera ID={camera_id}"
+        )  # (ADDED COMMENT)
+
         cam = self._store.get(camera_id)
         if cam is None:
-            logger.debug(f"[REPO][GET_FEED] Camera ID={camera_id} not found.")
+            logger.debug(
+                f"[REPO][GET_FEED] Camera ID={camera_id} not found."
+            )  # (ADDED COMMENT)
             return None
 
         for feed in cam.available_feeds:
@@ -264,7 +323,7 @@ class SimpleCameraMemoryStorage(CameraRepositoryInterface):
 
         logger.debug(
             f"[REPO][GET_FEED] Feed ID={feed_id} not found for camera ID={camera_id}"
-        )
+        )  # (ADDED COMMENT)
         return None
 
     # LIST FEEDS (WITH FILTERS + PAGINATION)
@@ -278,9 +337,15 @@ class SimpleCameraMemoryStorage(CameraRepositoryInterface):
         page_size: int = 20,
     ) -> List[VideoFeedInfo]:
 
+        logger.info(
+            f"[REPO] Listing feeds for camera ID={camera_id}"
+        )  # (ADDED COMMENT)
+
         cam = self._store.get(camera_id)
         if cam is None:
-            logger.debug(f"[REPO][LIST_FEEDS] Camera ID={camera_id} not found.")
+            logger.debug(
+                f"[REPO][LIST_FEEDS] Camera ID={camera_id} not found."
+            )  # (ADDED COMMENT)
             return []
 
         feeds = list(cam.available_feeds)
@@ -306,5 +371,9 @@ class SimpleCameraMemoryStorage(CameraRepositoryInterface):
 
         start = (page - 1) * page_size
         end = start + page_size
+
+        logger.info(
+            f"[REPO] Returning {len(feeds[start:end])} feeds"
+        )  # (ADDED COMMENT)
 
         return feeds[start:end]
