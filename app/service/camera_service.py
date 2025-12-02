@@ -178,26 +178,6 @@ class CameraService:
                     "A feed with same protocol and port already exists for this camera."
                 )
 
-        # RULE 2 → Prevent duplicate port globally
-        for other in self.repo.list_cameras():
-            for f in other.available_feeds:
-                if f.feed_port == feed_data.feed_port:
-                    logger.warning(
-                        "[SERVICE] Feed port conflict with another camera"
-                    )  # (ADDED COMMENT)
-                    raise ConflictError(
-                        f"Feed port {feed_data.feed_port} already used by another camera."
-                    )
-
-        new_feed = self.repo.add_feed(camera_id, feed_data)
-
-        cam.last_known_checkin = datetime.now(timezone.utc)  # (ADDED HEARTBEAT HERE)
-        cam.last_updated_on = datetime.now(timezone.utc)  # (ADDED HEARTBEAT HERE)
-        self.repo._store[camera_id] = cam  # (ADDED HEARTBEAT HERE)
-
-        logger.info("[SERVICE] Feed successfully added")  # (ADDED COMMENT)
-        return new_feed
-
     # UPDATE FEED
     def update_feed(
         self, camera_id: UUID, feed_id: UUID, updates: FeedUpdate

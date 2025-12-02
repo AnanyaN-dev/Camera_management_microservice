@@ -153,17 +153,16 @@ API: Camera successfully added
 2. Camera name and model combination must also be unique, orelse will throw an error.
 3. Each camera has one or more video feeds or not.
 4. Each feed must have a unique protocol + port combination within the same camera id.
-5. Feed ports must be unique across all cameras for RTSP to avoid conflicts or throw conflicterror.
-6. Heartbeat updates the camera's last check-in timestamp, when sent /heartbeat in endpoint(it will activate)(FOR CHECKING). But the last_checkin for all the cameras is updated automatically when camera operations takes place.
-7. A camera is considered online only if its last heartbeat is within the configured timeout.
+5. Heartbeat updates the camera's last check-in timestamp, when sent /heartbeat in endpoint(it will activate)(FOR CHECKING). But the last_checkin for all the cameras is updated automatically when camera operations takes place.
+6. A camera is considered online only if its last heartbeat is within the configured timeout.
         # now = datetime.now(timezone.utc)
         # diff = now - cam.last_known_checkin
-8. Listing cameras supports filtering by:
+7. Listing cameras supports filtering by:
    model substring
    IP range
    online/offline status
-9. Pagination is supported for camera and feed listing(GET METHOD).
-10. The project uses an in-memory repository storing everything in runtime memory only.
+8. Pagination is supported for camera and feed listing(GET METHOD).
+9. The project uses an in-memory repository storing everything in runtime memory only.
 ```
 
 ## Environment Settings
