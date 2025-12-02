@@ -1,0 +1,515 @@
+{"time": "2025-12-02 10:06:16,323", "level": "INFO", "module": "app.api.camera_api", "message": "API: Received request to ADD a camera"}
+{"time": "2025-12-02 10:06:16,328", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:16,328", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,329", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,329", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:16,330", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=68abf43a-26a0-48dd-a2fc-744d9bff3cec"}
+{"time": "2025-12-02 10:06:16,331", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=68abf43a-26a0-48dd-a2fc-744d9bff3cec"}
+{"time": "2025-12-02 10:06:16,331", "level": "INFO", "module": "app.api.camera_api", "message": "API: Camera successfully added with ID=68abf43a-26a0-48dd-a2fc-744d9bff3cec"}
+{"time": "2025-12-02 10:06:16,335", "level": "INFO", "module": "httpx", "message": "HTTP Request: POST http://testserver/cameras/ "HTTP/1.1 200 OK""}
+{"time": "2025-12-02 10:06:16,346", "level": "INFO", "module": "app.api.camera_api", "message": "API: Received request to ADD a camera"}
+{"time": "2025-12-02 10:06:16,346", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:16,346", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,346", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,346", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:16,347", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=ba6c5280-b10a-4490-9a24-03ee4ab95405"}
+{"time": "2025-12-02 10:06:16,347", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=ba6c5280-b10a-4490-9a24-03ee4ab95405"}
+{"time": "2025-12-02 10:06:16,347", "level": "INFO", "module": "app.api.camera_api", "message": "API: Camera successfully added with ID=ba6c5280-b10a-4490-9a24-03ee4ab95405"}
+{"time": "2025-12-02 10:06:16,349", "level": "INFO", "module": "httpx", "message": "HTTP Request: POST http://testserver/cameras/ "HTTP/1.1 200 OK""}
+{"time": "2025-12-02 10:06:16,354", "level": "INFO", "module": "app.api.camera_api", "message": "API: Request to GET camera ID=ba6c5280-b10a-4490-9a24-03ee4ab95405"}
+{"time": "2025-12-02 10:06:16,354", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Getting camera ID=ba6c5280-b10a-4490-9a24-03ee4ab95405"}
+{"time": "2025-12-02 10:06:16,355", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=ba6c5280-b10a-4490-9a24-03ee4ab95405"}
+{"time": "2025-12-02 10:06:16,355", "level": "INFO", "module": "app.api.camera_api", "message": "API: Successfully fetched camera ID=ba6c5280-b10a-4490-9a24-03ee4ab95405"}
+{"time": "2025-12-02 10:06:16,358", "level": "INFO", "module": "httpx", "message": "HTTP Request: GET http://testserver/cameras/ba6c5280-b10a-4490-9a24-03ee4ab95405 "HTTP/1.1 200 OK""}
+{"time": "2025-12-02 10:06:16,367", "level": "INFO", "module": "app.api.camera_api", "message": "API: Request to GET camera ID=a177d553-a2c8-451a-8bb0-43dd0db64eec"}
+{"time": "2025-12-02 10:06:16,368", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Getting camera ID=a177d553-a2c8-451a-8bb0-43dd0db64eec"}
+{"time": "2025-12-02 10:06:16,368", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=a177d553-a2c8-451a-8bb0-43dd0db64eec"}
+{"time": "2025-12-02 10:06:16,369", "level": "WARNING", "module": "app.service.camera_service", "message": "[GET CAMERA] Not found: a177d553-a2c8-451a-8bb0-43dd0db64eec"}
+{"time": "2025-12-02 10:06:16,369", "level": "WARNING", "module": "app.api.camera_api", "message": "API: Camera ID=a177d553-a2c8-451a-8bb0-43dd0db64eec not found"}
+{"time": "2025-12-02 10:06:16,371", "level": "INFO", "module": "httpx", "message": "HTTP Request: GET http://testserver/cameras/a177d553-a2c8-451a-8bb0-43dd0db64eec "HTTP/1.1 404 Not Found""}
+{"time": "2025-12-02 10:06:16,383", "level": "INFO", "module": "app.api.camera_api", "message": "API: Received request to ADD a camera"}
+{"time": "2025-12-02 10:06:16,383", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:16,383", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,383", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,384", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:16,384", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=5184b4e6-5ed5-4780-b96d-5a46e3835e8e"}
+{"time": "2025-12-02 10:06:16,385", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=5184b4e6-5ed5-4780-b96d-5a46e3835e8e"}
+{"time": "2025-12-02 10:06:16,385", "level": "INFO", "module": "app.api.camera_api", "message": "API: Camera successfully added with ID=5184b4e6-5ed5-4780-b96d-5a46e3835e8e"}
+{"time": "2025-12-02 10:06:16,389", "level": "INFO", "module": "httpx", "message": "HTTP Request: POST http://testserver/cameras/ "HTTP/1.1 200 OK""}
+{"time": "2025-12-02 10:06:16,394", "level": "INFO", "module": "app.api.camera_api", "message": "API: Request to DELETE camera ID=5184b4e6-5ed5-4780-b96d-5a46e3835e8e"}
+{"time": "2025-12-02 10:06:16,394", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Removing camera ID=5184b4e6-5ed5-4780-b96d-5a46e3835e8e"}
+{"time": "2025-12-02 10:06:16,395", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Request to remove camera ID=5184b4e6-5ed5-4780-b96d-5a46e3835e8e"}
+{"time": "2025-12-02 10:06:16,395", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][REMOVE_CAMERA] Removed camera ID=5184b4e6-5ed5-4780-b96d-5a46e3835e8e"}
+{"time": "2025-12-02 10:06:16,395", "level": "INFO", "module": "app.api.camera_api", "message": "API: Successfully deleted camera ID=5184b4e6-5ed5-4780-b96d-5a46e3835e8e"}
+{"time": "2025-12-02 10:06:16,397", "level": "INFO", "module": "httpx", "message": "HTTP Request: DELETE http://testserver/cameras/5184b4e6-5ed5-4780-b96d-5a46e3835e8e "HTTP/1.1 200 OK""}
+{"time": "2025-12-02 10:06:16,404", "level": "INFO", "module": "app.api.camera_api", "message": "API: Request to GET camera ID=5184b4e6-5ed5-4780-b96d-5a46e3835e8e"}
+{"time": "2025-12-02 10:06:16,404", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Getting camera ID=5184b4e6-5ed5-4780-b96d-5a46e3835e8e"}
+{"time": "2025-12-02 10:06:16,404", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=5184b4e6-5ed5-4780-b96d-5a46e3835e8e"}
+{"time": "2025-12-02 10:06:16,404", "level": "WARNING", "module": "app.service.camera_service", "message": "[GET CAMERA] Not found: 5184b4e6-5ed5-4780-b96d-5a46e3835e8e"}
+{"time": "2025-12-02 10:06:16,405", "level": "WARNING", "module": "app.api.camera_api", "message": "API: Camera ID=5184b4e6-5ed5-4780-b96d-5a46e3835e8e not found"}
+{"time": "2025-12-02 10:06:16,408", "level": "INFO", "module": "httpx", "message": "HTTP Request: GET http://testserver/cameras/5184b4e6-5ed5-4780-b96d-5a46e3835e8e "HTTP/1.1 404 Not Found""}
+{"time": "2025-12-02 10:06:16,418", "level": "INFO", "module": "app.api.camera_api", "message": "API: Received request to ADD a camera"}
+{"time": "2025-12-02 10:06:16,418", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:16,418", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,419", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,419", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:16,419", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=7ac1ab11-d20c-491d-aa80-b0ba6049e314"}
+{"time": "2025-12-02 10:06:16,419", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=7ac1ab11-d20c-491d-aa80-b0ba6049e314"}
+{"time": "2025-12-02 10:06:16,420", "level": "INFO", "module": "app.api.camera_api", "message": "API: Camera successfully added with ID=7ac1ab11-d20c-491d-aa80-b0ba6049e314"}
+{"time": "2025-12-02 10:06:16,423", "level": "INFO", "module": "httpx", "message": "HTTP Request: POST http://testserver/cameras/ "HTTP/1.1 200 OK""}
+{"time": "2025-12-02 10:06:16,429", "level": "INFO", "module": "app.api.camera_api", "message": "API: Request to UPDATE camera ID=7ac1ab11-d20c-491d-aa80-b0ba6049e314"}
+{"time": "2025-12-02 10:06:16,429", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Updating camera ID=7ac1ab11-d20c-491d-aa80-b0ba6049e314"}
+{"time": "2025-12-02 10:06:16,430", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Request to update camera ID=7ac1ab11-d20c-491d-aa80-b0ba6049e314"}
+{"time": "2025-12-02 10:06:16,430", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][UPDATE_CAMERA] Updated camera ID=7ac1ab11-d20c-491d-aa80-b0ba6049e314"}
+{"time": "2025-12-02 10:06:16,430", "level": "INFO", "module": "app.api.camera_api", "message": "API: Successfully updated camera ID=7ac1ab11-d20c-491d-aa80-b0ba6049e314"}
+{"time": "2025-12-02 10:06:16,433", "level": "INFO", "module": "httpx", "message": "HTTP Request: PATCH http://testserver/cameras/7ac1ab11-d20c-491d-aa80-b0ba6049e314 "HTTP/1.1 200 OK""}
+{"time": "2025-12-02 10:06:16,443", "level": "INFO", "module": "app.api.camera_api", "message": "API: Received request to ADD a camera"}
+{"time": "2025-12-02 10:06:16,444", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:16,444", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,444", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,445", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:16,445", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=8eee25b7-c627-4c8c-b3c0-4171f38f586d"}
+{"time": "2025-12-02 10:06:16,446", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=8eee25b7-c627-4c8c-b3c0-4171f38f586d"}
+{"time": "2025-12-02 10:06:16,446", "level": "INFO", "module": "app.api.camera_api", "message": "API: Camera successfully added with ID=8eee25b7-c627-4c8c-b3c0-4171f38f586d"}
+{"time": "2025-12-02 10:06:16,448", "level": "INFO", "module": "httpx", "message": "HTTP Request: POST http://testserver/cameras/ "HTTP/1.1 200 OK""}
+{"time": "2025-12-02 10:06:16,454", "level": "INFO", "module": "app.api.camera_api", "message": "API: Received request to ADD a camera"}
+{"time": "2025-12-02 10:06:16,455", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:16,455", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,455", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,456", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:16,458", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=dfc8a421-3d71-449d-ba9c-a1410c752813"}
+{"time": "2025-12-02 10:06:16,459", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=dfc8a421-3d71-449d-ba9c-a1410c752813"}
+{"time": "2025-12-02 10:06:16,459", "level": "INFO", "module": "app.api.camera_api", "message": "API: Camera successfully added with ID=dfc8a421-3d71-449d-ba9c-a1410c752813"}
+{"time": "2025-12-02 10:06:16,463", "level": "INFO", "module": "httpx", "message": "HTTP Request: POST http://testserver/cameras/ "HTTP/1.1 200 OK""}
+{"time": "2025-12-02 10:06:16,546", "level": "INFO", "module": "app.api.camera_api", "message": "API: Received request to ADD a camera"}
+{"time": "2025-12-02 10:06:16,546", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:16,546", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,547", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,547", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:16,547", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=ef7d5086-d141-44ff-bca1-1048090748a4"}
+{"time": "2025-12-02 10:06:16,548", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=ef7d5086-d141-44ff-bca1-1048090748a4"}
+{"time": "2025-12-02 10:06:16,548", "level": "INFO", "module": "app.api.camera_api", "message": "API: Camera successfully added with ID=ef7d5086-d141-44ff-bca1-1048090748a4"}
+{"time": "2025-12-02 10:06:16,551", "level": "INFO", "module": "httpx", "message": "HTTP Request: POST http://testserver/cameras/ "HTTP/1.1 200 OK""}
+{"time": "2025-12-02 10:06:16,557", "level": "INFO", "module": "app.api.camera_api", "message": "API: Request to LIST cameras"}
+{"time": "2025-12-02 10:06:16,558", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Listing cameras with filters"}
+{"time": "2025-12-02 10:06:16,558", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,558", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Returning 3 cameras"}
+{"time": "2025-12-02 10:06:16,559", "level": "INFO", "module": "app.api.camera_api", "message": "API: Returned 3 cameras in list"}
+{"time": "2025-12-02 10:06:16,561", "level": "INFO", "module": "httpx", "message": "HTTP Request: GET http://testserver/cameras/ "HTTP/1.1 200 OK""}
+{"time": "2025-12-02 10:06:16,593", "level": "INFO", "module": "app.api.camera_api", "message": "API: Received request to ADD a camera"}
+{"time": "2025-12-02 10:06:16,593", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:16,594", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,594", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,594", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:16,595", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=56f63763-e2b0-4ecd-9379-814ffa52b44a"}
+{"time": "2025-12-02 10:06:16,595", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=56f63763-e2b0-4ecd-9379-814ffa52b44a"}
+{"time": "2025-12-02 10:06:16,595", "level": "INFO", "module": "app.api.camera_api", "message": "API: Camera successfully added with ID=56f63763-e2b0-4ecd-9379-814ffa52b44a"}
+{"time": "2025-12-02 10:06:16,599", "level": "INFO", "module": "httpx", "message": "HTTP Request: POST http://testserver/cameras/ "HTTP/1.1 200 OK""}
+{"time": "2025-12-02 10:06:16,604", "level": "INFO", "module": "app.api.camera_api", "message": "API: Received request to ADD a camera"}
+{"time": "2025-12-02 10:06:16,605", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:16,605", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,605", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,605", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:16,606", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=ce7ec94d-d643-44a5-bab4-f49e63836ac8"}
+{"time": "2025-12-02 10:06:16,606", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=ce7ec94d-d643-44a5-bab4-f49e63836ac8"}
+{"time": "2025-12-02 10:06:16,606", "level": "INFO", "module": "app.api.camera_api", "message": "API: Camera successfully added with ID=ce7ec94d-d643-44a5-bab4-f49e63836ac8"}
+{"time": "2025-12-02 10:06:16,609", "level": "INFO", "module": "httpx", "message": "HTTP Request: POST http://testserver/cameras/ "HTTP/1.1 200 OK""}
+{"time": "2025-12-02 10:06:16,615", "level": "INFO", "module": "app.api.camera_api", "message": "API: Request to LIST cameras"}
+{"time": "2025-12-02 10:06:16,616", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Listing cameras with filters"}
+{"time": "2025-12-02 10:06:16,616", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,616", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Returning 1 cameras"}
+{"time": "2025-12-02 10:06:16,616", "level": "INFO", "module": "app.api.camera_api", "message": "API: Returned 1 cameras in list"}
+{"time": "2025-12-02 10:06:16,619", "level": "INFO", "module": "httpx", "message": "HTTP Request: GET http://testserver/cameras/?model=SpecialModel "HTTP/1.1 200 OK""}
+{"time": "2025-12-02 10:06:16,628", "level": "INFO", "module": "app.api.camera_api", "message": "API: Received request to ADD a camera"}
+{"time": "2025-12-02 10:06:16,628", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:16,628", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,629", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,629", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:16,629", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=8684610c-82b1-4e77-badb-a849ffbedd56"}
+{"time": "2025-12-02 10:06:16,630", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=8684610c-82b1-4e77-badb-a849ffbedd56"}
+{"time": "2025-12-02 10:06:16,630", "level": "INFO", "module": "app.api.camera_api", "message": "API: Camera successfully added with ID=8684610c-82b1-4e77-badb-a849ffbedd56"}
+{"time": "2025-12-02 10:06:16,634", "level": "INFO", "module": "httpx", "message": "HTTP Request: POST http://testserver/cameras/ "HTTP/1.1 200 OK""}
+{"time": "2025-12-02 10:06:16,638", "level": "INFO", "module": "app.api.camera_api", "message": "API: Request to ADD FEED to camera ID=8684610c-82b1-4e77-badb-a849ffbedd56"}
+{"time": "2025-12-02 10:06:16,639", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding feed to camera ID=8684610c-82b1-4e77-badb-a849ffbedd56"}
+{"time": "2025-12-02 10:06:16,639", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=8684610c-82b1-4e77-badb-a849ffbedd56"}
+{"time": "2025-12-02 10:06:16,640", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,640", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Adding feed to camera ID=8684610c-82b1-4e77-badb-a849ffbedd56"}
+{"time": "2025-12-02 10:06:16,640", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_FEED] Added feed ID=190766fd-dda4-4207-aef5-c423d42bc7f9 to camera ID=8684610c-82b1-4e77-badb-a849ffbedd56"}
+{"time": "2025-12-02 10:06:16,641", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Feed successfully added"}
+{"time": "2025-12-02 10:06:16,641", "level": "INFO", "module": "app.api.camera_api", "message": "API: Feed added to camera ID=8684610c-82b1-4e77-badb-a849ffbedd56"}
+{"time": "2025-12-02 10:06:16,644", "level": "INFO", "module": "httpx", "message": "HTTP Request: POST http://testserver/cameras/8684610c-82b1-4e77-badb-a849ffbedd56/feeds "HTTP/1.1 200 OK""}
+{"time": "2025-12-02 10:06:16,655", "level": "INFO", "module": "app.api.camera_api", "message": "API: Received request to ADD a camera"}
+{"time": "2025-12-02 10:06:16,655", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:16,655", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,655", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,656", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:16,656", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=f26f8582-fa4f-4009-8a54-8b31e65a9076"}
+{"time": "2025-12-02 10:06:16,657", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=f26f8582-fa4f-4009-8a54-8b31e65a9076"}
+{"time": "2025-12-02 10:06:16,657", "level": "INFO", "module": "app.api.camera_api", "message": "API: Camera successfully added with ID=f26f8582-fa4f-4009-8a54-8b31e65a9076"}
+{"time": "2025-12-02 10:06:16,660", "level": "INFO", "module": "httpx", "message": "HTTP Request: POST http://testserver/cameras/ "HTTP/1.1 200 OK""}
+{"time": "2025-12-02 10:06:16,667", "level": "INFO", "module": "app.api.camera_api", "message": "API: Request to LIST FEEDS of camera ID=f26f8582-fa4f-4009-8a54-8b31e65a9076"}
+{"time": "2025-12-02 10:06:16,668", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Listing feeds for camera ID=f26f8582-fa4f-4009-8a54-8b31e65a9076"}
+{"time": "2025-12-02 10:06:16,668", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=f26f8582-fa4f-4009-8a54-8b31e65a9076"}
+{"time": "2025-12-02 10:06:16,668", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Returning 1 feeds"}
+{"time": "2025-12-02 10:06:16,668", "level": "INFO", "module": "app.api.camera_api", "message": "API: Returned 1 feeds for camera ID=f26f8582-fa4f-4009-8a54-8b31e65a9076"}
+{"time": "2025-12-02 10:06:16,671", "level": "INFO", "module": "httpx", "message": "HTTP Request: GET http://testserver/cameras/f26f8582-fa4f-4009-8a54-8b31e65a9076/feeds "HTTP/1.1 200 OK""}
+{"time": "2025-12-02 10:06:16,680", "level": "INFO", "module": "app.api.camera_api", "message": "API: Received request to ADD a camera"}
+{"time": "2025-12-02 10:06:16,681", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:16,681", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,681", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,682", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:16,683", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=d3c69069-b88c-4798-ad25-8ed14c7743bf"}
+{"time": "2025-12-02 10:06:16,684", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=d3c69069-b88c-4798-ad25-8ed14c7743bf"}
+{"time": "2025-12-02 10:06:16,684", "level": "INFO", "module": "app.api.camera_api", "message": "API: Camera successfully added with ID=d3c69069-b88c-4798-ad25-8ed14c7743bf"}
+{"time": "2025-12-02 10:06:16,687", "level": "INFO", "module": "httpx", "message": "HTTP Request: POST http://testserver/cameras/ "HTTP/1.1 200 OK""}
+{"time": "2025-12-02 10:06:16,692", "level": "INFO", "module": "app.api.camera_api", "message": "API: Request to LIST FEEDS of camera ID=d3c69069-b88c-4798-ad25-8ed14c7743bf"}
+{"time": "2025-12-02 10:06:16,692", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Listing feeds for camera ID=d3c69069-b88c-4798-ad25-8ed14c7743bf"}
+{"time": "2025-12-02 10:06:16,692", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=d3c69069-b88c-4798-ad25-8ed14c7743bf"}
+{"time": "2025-12-02 10:06:16,693", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Returning 1 feeds"}
+{"time": "2025-12-02 10:06:16,693", "level": "INFO", "module": "app.api.camera_api", "message": "API: Returned 1 feeds for camera ID=d3c69069-b88c-4798-ad25-8ed14c7743bf"}
+{"time": "2025-12-02 10:06:16,695", "level": "INFO", "module": "httpx", "message": "HTTP Request: GET http://testserver/cameras/d3c69069-b88c-4798-ad25-8ed14c7743bf/feeds "HTTP/1.1 200 OK""}
+{"time": "2025-12-02 10:06:16,702", "level": "INFO", "module": "app.api.camera_api", "message": "API: Request to UPDATE feed ID=aad706ca-2818-4ee8-b9da-c7e8627c96e7 for camera ID=d3c69069-b88c-4798-ad25-8ed14c7743bf"}
+{"time": "2025-12-02 10:06:16,702", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Updating feed ID=aad706ca-2818-4ee8-b9da-c7e8627c96e7"}
+{"time": "2025-12-02 10:06:16,703", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Updating feed ID=aad706ca-2818-4ee8-b9da-c7e8627c96e7 for camera ID=d3c69069-b88c-4798-ad25-8ed14c7743bf"}
+{"time": "2025-12-02 10:06:16,703", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][UPDATE_FEED] Updated feed ID=aad706ca-2818-4ee8-b9da-c7e8627c96e7 for camera ID=d3c69069-b88c-4798-ad25-8ed14c7743bf"}
+{"time": "2025-12-02 10:06:16,703", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=d3c69069-b88c-4798-ad25-8ed14c7743bf"}
+{"time": "2025-12-02 10:06:16,704", "level": "INFO", "module": "app.api.camera_api", "message": "API: Successfully updated feed ID=aad706ca-2818-4ee8-b9da-c7e8627c96e7"}
+{"time": "2025-12-02 10:06:16,706", "level": "INFO", "module": "httpx", "message": "HTTP Request: PATCH http://testserver/cameras/d3c69069-b88c-4798-ad25-8ed14c7743bf/feeds/aad706ca-2818-4ee8-b9da-c7e8627c96e7 "HTTP/1.1 200 OK""}
+{"time": "2025-12-02 10:06:16,717", "level": "INFO", "module": "app.api.camera_api", "message": "API: Received request to ADD a camera"}
+{"time": "2025-12-02 10:06:16,717", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:16,718", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,718", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,718", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:16,718", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=77d48911-32d4-4aba-90e4-2a648bd584b1"}
+{"time": "2025-12-02 10:06:16,718", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=77d48911-32d4-4aba-90e4-2a648bd584b1"}
+{"time": "2025-12-02 10:06:16,719", "level": "INFO", "module": "app.api.camera_api", "message": "API: Camera successfully added with ID=77d48911-32d4-4aba-90e4-2a648bd584b1"}
+{"time": "2025-12-02 10:06:16,722", "level": "INFO", "module": "httpx", "message": "HTTP Request: POST http://testserver/cameras/ "HTTP/1.1 200 OK""}
+{"time": "2025-12-02 10:06:16,727", "level": "INFO", "module": "app.api.camera_api", "message": "API: Request to LIST FEEDS of camera ID=77d48911-32d4-4aba-90e4-2a648bd584b1"}
+{"time": "2025-12-02 10:06:16,727", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Listing feeds for camera ID=77d48911-32d4-4aba-90e4-2a648bd584b1"}
+{"time": "2025-12-02 10:06:16,728", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=77d48911-32d4-4aba-90e4-2a648bd584b1"}
+{"time": "2025-12-02 10:06:16,728", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Returning 1 feeds"}
+{"time": "2025-12-02 10:06:16,728", "level": "INFO", "module": "app.api.camera_api", "message": "API: Returned 1 feeds for camera ID=77d48911-32d4-4aba-90e4-2a648bd584b1"}
+{"time": "2025-12-02 10:06:16,731", "level": "INFO", "module": "httpx", "message": "HTTP Request: GET http://testserver/cameras/77d48911-32d4-4aba-90e4-2a648bd584b1/feeds "HTTP/1.1 200 OK""}
+{"time": "2025-12-02 10:06:16,737", "level": "INFO", "module": "app.api.camera_api", "message": "API: Request to DELETE feed ID=3e7b24c7-c688-453f-a825-2a4bdc1b9171 from camera ID=77d48911-32d4-4aba-90e4-2a648bd584b1"}
+{"time": "2025-12-02 10:06:16,737", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Removing feed ID=3e7b24c7-c688-453f-a825-2a4bdc1b9171"}
+{"time": "2025-12-02 10:06:16,737", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Removing feed ID=3e7b24c7-c688-453f-a825-2a4bdc1b9171 from camera ID=77d48911-32d4-4aba-90e4-2a648bd584b1"}
+{"time": "2025-12-02 10:06:16,738", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][REMOVE_FEED] Removed feed ID=3e7b24c7-c688-453f-a825-2a4bdc1b9171 from camera ID=77d48911-32d4-4aba-90e4-2a648bd584b1"}
+{"time": "2025-12-02 10:06:16,738", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=77d48911-32d4-4aba-90e4-2a648bd584b1"}
+{"time": "2025-12-02 10:06:16,738", "level": "INFO", "module": "app.api.camera_api", "message": "API: Successfully deleted feed ID=3e7b24c7-c688-453f-a825-2a4bdc1b9171"}
+{"time": "2025-12-02 10:06:16,740", "level": "INFO", "module": "httpx", "message": "HTTP Request: DELETE http://testserver/cameras/77d48911-32d4-4aba-90e4-2a648bd584b1/feeds/3e7b24c7-c688-453f-a825-2a4bdc1b9171 "HTTP/1.1 200 OK""}
+{"time": "2025-12-02 10:06:16,745", "level": "INFO", "module": "app.api.camera_api", "message": "API: Request to LIST FEEDS of camera ID=77d48911-32d4-4aba-90e4-2a648bd584b1"}
+{"time": "2025-12-02 10:06:16,746", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Listing feeds for camera ID=77d48911-32d4-4aba-90e4-2a648bd584b1"}
+{"time": "2025-12-02 10:06:16,746", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=77d48911-32d4-4aba-90e4-2a648bd584b1"}
+{"time": "2025-12-02 10:06:16,746", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Returning 0 feeds"}
+{"time": "2025-12-02 10:06:16,747", "level": "INFO", "module": "app.api.camera_api", "message": "API: Returned 0 feeds for camera ID=77d48911-32d4-4aba-90e4-2a648bd584b1"}
+{"time": "2025-12-02 10:06:16,750", "level": "INFO", "module": "httpx", "message": "HTTP Request: GET http://testserver/cameras/77d48911-32d4-4aba-90e4-2a648bd584b1/feeds "HTTP/1.1 200 OK""}
+{"time": "2025-12-02 10:06:16,760", "level": "INFO", "module": "app.api.camera_api", "message": "API: Received request to ADD a camera"}
+{"time": "2025-12-02 10:06:16,760", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:16,761", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,761", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,762", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:16,762", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=26c763af-eab0-4ba8-bf85-433dbaf75141"}
+{"time": "2025-12-02 10:06:16,763", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=26c763af-eab0-4ba8-bf85-433dbaf75141"}
+{"time": "2025-12-02 10:06:16,763", "level": "INFO", "module": "app.api.camera_api", "message": "API: Camera successfully added with ID=26c763af-eab0-4ba8-bf85-433dbaf75141"}
+{"time": "2025-12-02 10:06:16,766", "level": "INFO", "module": "httpx", "message": "HTTP Request: POST http://testserver/cameras/ "HTTP/1.1 200 OK""}
+{"time": "2025-12-02 10:06:16,770", "level": "INFO", "module": "app.api.camera_api", "message": "API: Request to ADD FEED to camera ID=26c763af-eab0-4ba8-bf85-433dbaf75141"}
+{"time": "2025-12-02 10:06:16,770", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding feed to camera ID=26c763af-eab0-4ba8-bf85-433dbaf75141"}
+{"time": "2025-12-02 10:06:16,771", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=26c763af-eab0-4ba8-bf85-433dbaf75141"}
+{"time": "2025-12-02 10:06:16,771", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,771", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Adding feed to camera ID=26c763af-eab0-4ba8-bf85-433dbaf75141"}
+{"time": "2025-12-02 10:06:16,771", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_FEED] Added feed ID=e881802f-7225-4d3f-83ad-84d207df9c65 to camera ID=26c763af-eab0-4ba8-bf85-433dbaf75141"}
+{"time": "2025-12-02 10:06:16,771", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Feed successfully added"}
+{"time": "2025-12-02 10:06:16,772", "level": "INFO", "module": "app.api.camera_api", "message": "API: Feed added to camera ID=26c763af-eab0-4ba8-bf85-433dbaf75141"}
+{"time": "2025-12-02 10:06:16,774", "level": "INFO", "module": "httpx", "message": "HTTP Request: POST http://testserver/cameras/26c763af-eab0-4ba8-bf85-433dbaf75141/feeds "HTTP/1.1 200 OK""}
+{"time": "2025-12-02 10:06:16,780", "level": "INFO", "module": "app.api.camera_api", "message": "API: Request to LIST FEEDS of camera ID=26c763af-eab0-4ba8-bf85-433dbaf75141"}
+{"time": "2025-12-02 10:06:16,780", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Listing feeds for camera ID=26c763af-eab0-4ba8-bf85-433dbaf75141"}
+{"time": "2025-12-02 10:06:16,781", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=26c763af-eab0-4ba8-bf85-433dbaf75141"}
+{"time": "2025-12-02 10:06:16,782", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Returning 1 feeds"}
+{"time": "2025-12-02 10:06:16,782", "level": "INFO", "module": "app.api.camera_api", "message": "API: Returned 1 feeds for camera ID=26c763af-eab0-4ba8-bf85-433dbaf75141"}
+{"time": "2025-12-02 10:06:16,785", "level": "INFO", "module": "httpx", "message": "HTTP Request: GET http://testserver/cameras/26c763af-eab0-4ba8-bf85-433dbaf75141/feeds?port=1234 "HTTP/1.1 200 OK""}
+{"time": "2025-12-02 10:06:16,795", "level": "INFO", "module": "app.api.camera_api", "message": "API: Received request to ADD a camera"}
+{"time": "2025-12-02 10:06:16,795", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:16,796", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,796", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,796", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:16,797", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=c50c2c99-c763-4799-989c-5ab606150462"}
+{"time": "2025-12-02 10:06:16,800", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=c50c2c99-c763-4799-989c-5ab606150462"}
+{"time": "2025-12-02 10:06:16,801", "level": "INFO", "module": "app.api.camera_api", "message": "API: Camera successfully added with ID=c50c2c99-c763-4799-989c-5ab606150462"}
+{"time": "2025-12-02 10:06:16,804", "level": "INFO", "module": "httpx", "message": "HTTP Request: POST http://testserver/cameras/ "HTTP/1.1 200 OK""}
+{"time": "2025-12-02 10:06:16,810", "level": "INFO", "module": "app.api.camera_api", "message": "API: HEARTBEAT received for camera ID=c50c2c99-c763-4799-989c-5ab606150462"}
+{"time": "2025-12-02 10:06:16,811", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Heartbeat received for camera ID=c50c2c99-c763-4799-989c-5ab606150462"}
+{"time": "2025-12-02 10:06:16,811", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=c50c2c99-c763-4799-989c-5ab606150462"}
+{"time": "2025-12-02 10:06:16,811", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Heartbeat updated"}
+{"time": "2025-12-02 10:06:16,811", "level": "INFO", "module": "app.api.camera_api", "message": "API: Heartbeat updated for camera ID=c50c2c99-c763-4799-989c-5ab606150462"}
+{"time": "2025-12-02 10:06:16,814", "level": "INFO", "module": "httpx", "message": "HTTP Request: POST http://testserver/cameras/c50c2c99-c763-4799-989c-5ab606150462/heartbeat "HTTP/1.1 200 OK""}
+{"time": "2025-12-02 10:06:16,822", "level": "INFO", "module": "app.api.camera_api", "message": "API: Request to GET STATUS of camera ID=c50c2c99-c763-4799-989c-5ab606150462"}
+{"time": "2025-12-02 10:06:16,822", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Checking online status for camera ID=c50c2c99-c763-4799-989c-5ab606150462"}
+{"time": "2025-12-02 10:06:16,823", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=c50c2c99-c763-4799-989c-5ab606150462"}
+{"time": "2025-12-02 10:06:16,823", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Camera online — heartbeat OK"}
+{"time": "2025-12-02 10:06:16,823", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Getting camera ID=c50c2c99-c763-4799-989c-5ab606150462"}
+{"time": "2025-12-02 10:06:16,824", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=c50c2c99-c763-4799-989c-5ab606150462"}
+{"time": "2025-12-02 10:06:16,824", "level": "INFO", "module": "app.api.camera_api", "message": "API: Returned status for camera ID=c50c2c99-c763-4799-989c-5ab606150462"}
+{"time": "2025-12-02 10:06:16,828", "level": "INFO", "module": "httpx", "message": "HTTP Request: GET http://testserver/cameras/c50c2c99-c763-4799-989c-5ab606150462/status "HTTP/1.1 200 OK""}
+{"time": "2025-12-02 10:06:16,835", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:16,836", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=4e325aba-c9c3-4193-91bc-39ee97305f51"}
+{"time": "2025-12-02 10:06:16,841", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:16,842", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=f033bd17-7aed-4be2-869a-5da6ca91e557"}
+{"time": "2025-12-02 10:06:16,842", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=f033bd17-7aed-4be2-869a-5da6ca91e557"}
+{"time": "2025-12-02 10:06:16,847", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=b5dca76f-1f6e-4a3b-b597-f2498329fbe9"}
+{"time": "2025-12-02 10:06:16,854", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:16,855", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=2d44a12f-94b1-48ce-a4aa-d45bd6058413"}
+{"time": "2025-12-02 10:06:16,855", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Request to remove camera ID=2d44a12f-94b1-48ce-a4aa-d45bd6058413"}
+{"time": "2025-12-02 10:06:16,855", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][REMOVE_CAMERA] Removed camera ID=2d44a12f-94b1-48ce-a4aa-d45bd6058413"}
+{"time": "2025-12-02 10:06:16,856", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=2d44a12f-94b1-48ce-a4aa-d45bd6058413"}
+{"time": "2025-12-02 10:06:16,861", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Request to remove camera ID=165f5a2a-9e3c-4b42-ae1a-b804e3c4b9d8"}
+{"time": "2025-12-02 10:06:16,868", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:16,869", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=01ad70ce-8d40-47f1-b9b2-093bb2caf0bb"}
+{"time": "2025-12-02 10:06:16,869", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Request to update camera ID=01ad70ce-8d40-47f1-b9b2-093bb2caf0bb"}
+{"time": "2025-12-02 10:06:16,869", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][UPDATE_CAMERA] Updated camera ID=01ad70ce-8d40-47f1-b9b2-093bb2caf0bb"}
+{"time": "2025-12-02 10:06:16,875", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Request to update camera ID=dc24711b-2f5e-4ce9-9bf0-ea0a158cb768"}
+{"time": "2025-12-02 10:06:16,880", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:16,880", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=f40e2879-e9ef-4db3-84dc-a84fc2ac6204"}
+{"time": "2025-12-02 10:06:16,881", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Adding feed to camera ID=f40e2879-e9ef-4db3-84dc-a84fc2ac6204"}
+{"time": "2025-12-02 10:06:16,882", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_FEED] Added feed ID=4a71fc3e-0aa2-4acc-bf68-505ab55d3eee to camera ID=f40e2879-e9ef-4db3-84dc-a84fc2ac6204"}
+{"time": "2025-12-02 10:06:16,883", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=f40e2879-e9ef-4db3-84dc-a84fc2ac6204"}
+{"time": "2025-12-02 10:06:16,889", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Adding feed to camera ID=8d1f6f14-2640-4c8f-9a03-97119191a59c"}
+{"time": "2025-12-02 10:06:16,895", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:16,896", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=90266784-3ab1-470c-a233-2542639d08df"}
+{"time": "2025-12-02 10:06:16,896", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Updating feed ID=40c3c8b2-081e-481f-ba65-7223a68ad0fd for camera ID=90266784-3ab1-470c-a233-2542639d08df"}
+{"time": "2025-12-02 10:06:16,896", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][UPDATE_FEED] Updated feed ID=40c3c8b2-081e-481f-ba65-7223a68ad0fd for camera ID=90266784-3ab1-470c-a233-2542639d08df"}
+{"time": "2025-12-02 10:06:16,904", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:16,905", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=8e1dd093-3c7d-459d-80ea-fd9fc16c83df"}
+{"time": "2025-12-02 10:06:16,906", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Updating feed ID=cd3ace1b-4224-496c-9773-909f569a0614 for camera ID=8e1dd093-3c7d-459d-80ea-fd9fc16c83df"}
+{"time": "2025-12-02 10:06:16,911", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:16,912", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=c131fd26-8e7f-4ad7-9907-4dddd71dbab9"}
+{"time": "2025-12-02 10:06:16,912", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Removing feed ID=d95a2dbc-96c9-4626-8dcc-7a85e9fe835e from camera ID=c131fd26-8e7f-4ad7-9907-4dddd71dbab9"}
+{"time": "2025-12-02 10:06:16,912", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][REMOVE_FEED] Removed feed ID=d95a2dbc-96c9-4626-8dcc-7a85e9fe835e from camera ID=c131fd26-8e7f-4ad7-9907-4dddd71dbab9"}
+{"time": "2025-12-02 10:06:16,913", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=c131fd26-8e7f-4ad7-9907-4dddd71dbab9"}
+{"time": "2025-12-02 10:06:16,921", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:16,921", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=9ad18d9c-9a89-4b92-b967-e13a15ea108b"}
+{"time": "2025-12-02 10:06:16,922", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Removing feed ID=bf4e1a71-745e-4609-970a-f0d6ae286bb8 from camera ID=9ad18d9c-9a89-4b92-b967-e13a15ea108b"}
+{"time": "2025-12-02 10:06:16,926", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:16,927", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,927", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,927", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:16,928", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=40ff3bd5-c718-48fb-8b94-1e360fc36486"}
+{"time": "2025-12-02 10:06:16,928", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=40ff3bd5-c718-48fb-8b94-1e360fc36486"}
+{"time": "2025-12-02 10:06:16,933", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:16,934", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,934", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,934", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:16,935", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=660d4cff-4c96-4756-825a-3a1cfc004e4f"}
+{"time": "2025-12-02 10:06:16,935", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=660d4cff-4c96-4756-825a-3a1cfc004e4f"}
+{"time": "2025-12-02 10:06:16,936", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:16,936", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,937", "level": "WARNING", "module": "app.service.camera_service", "message": "[ADD CAMERA] Duplicate IP rejected: 192.168.0.10"}
+{"time": "2025-12-02 10:06:16,941", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:16,941", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,942", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,942", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:16,942", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=4e1c1104-d972-46f9-94de-3668d6a26207"}
+{"time": "2025-12-02 10:06:16,943", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=4e1c1104-d972-46f9-94de-3668d6a26207"}
+{"time": "2025-12-02 10:06:16,943", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:16,944", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,944", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,944", "level": "WARNING", "module": "app.service.camera_service", "message": "[ADD CAMERA] Duplicate name+model rejected: TestCam | ModelX"}
+{"time": "2025-12-02 10:06:16,948", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:16,950", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,950", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,951", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:16,952", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=0b1855de-9457-4743-9237-8d5cc993f41c"}
+{"time": "2025-12-02 10:06:16,952", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=0b1855de-9457-4743-9237-8d5cc993f41c"}
+{"time": "2025-12-02 10:06:16,952", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Getting camera ID=0b1855de-9457-4743-9237-8d5cc993f41c"}
+{"time": "2025-12-02 10:06:16,953", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=0b1855de-9457-4743-9237-8d5cc993f41c"}
+{"time": "2025-12-02 10:06:16,957", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Getting camera ID=1ca1faa8-a341-43d7-9a05-6299dd9fa274"}
+{"time": "2025-12-02 10:06:16,957", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=1ca1faa8-a341-43d7-9a05-6299dd9fa274"}
+{"time": "2025-12-02 10:06:16,958", "level": "WARNING", "module": "app.service.camera_service", "message": "[GET CAMERA] Not found: 1ca1faa8-a341-43d7-9a05-6299dd9fa274"}
+{"time": "2025-12-02 10:06:16,962", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:16,962", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,963", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,963", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:16,963", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=8312e73b-4c08-48df-9f29-d5b243be74eb"}
+{"time": "2025-12-02 10:06:16,964", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=8312e73b-4c08-48df-9f29-d5b243be74eb"}
+{"time": "2025-12-02 10:06:16,965", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Removing camera ID=8312e73b-4c08-48df-9f29-d5b243be74eb"}
+{"time": "2025-12-02 10:06:16,965", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Request to remove camera ID=8312e73b-4c08-48df-9f29-d5b243be74eb"}
+{"time": "2025-12-02 10:06:16,965", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][REMOVE_CAMERA] Removed camera ID=8312e73b-4c08-48df-9f29-d5b243be74eb"}
+{"time": "2025-12-02 10:06:16,966", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Getting camera ID=8312e73b-4c08-48df-9f29-d5b243be74eb"}
+{"time": "2025-12-02 10:06:16,966", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=8312e73b-4c08-48df-9f29-d5b243be74eb"}
+{"time": "2025-12-02 10:06:16,966", "level": "WARNING", "module": "app.service.camera_service", "message": "[GET CAMERA] Not found: 8312e73b-4c08-48df-9f29-d5b243be74eb"}
+{"time": "2025-12-02 10:06:16,970", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Removing camera ID=991d450e-3fea-4fef-a8ce-120719bc9b6e"}
+{"time": "2025-12-02 10:06:16,970", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Request to remove camera ID=991d450e-3fea-4fef-a8ce-120719bc9b6e"}
+{"time": "2025-12-02 10:06:16,971", "level": "WARNING", "module": "app.service.camera_service", "message": "[DELETE CAMERA] Camera not found: 991d450e-3fea-4fef-a8ce-120719bc9b6e"}
+{"time": "2025-12-02 10:06:16,975", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:16,975", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,975", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,976", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:16,976", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=5d0c9070-99a3-4e5e-bd67-fcae31b85b95"}
+{"time": "2025-12-02 10:06:16,976", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=5d0c9070-99a3-4e5e-bd67-fcae31b85b95"}
+{"time": "2025-12-02 10:06:16,976", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Updating camera ID=5d0c9070-99a3-4e5e-bd67-fcae31b85b95"}
+{"time": "2025-12-02 10:06:16,976", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Request to update camera ID=5d0c9070-99a3-4e5e-bd67-fcae31b85b95"}
+{"time": "2025-12-02 10:06:16,977", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][UPDATE_CAMERA] Updated camera ID=5d0c9070-99a3-4e5e-bd67-fcae31b85b95"}
+{"time": "2025-12-02 10:06:16,981", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Updating camera ID=0e3e7e28-2e29-431b-bb2a-e0cdf0df5aeb"}
+{"time": "2025-12-02 10:06:16,982", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Request to update camera ID=0e3e7e28-2e29-431b-bb2a-e0cdf0df5aeb"}
+{"time": "2025-12-02 10:06:16,982", "level": "WARNING", "module": "app.service.camera_service", "message": "[SERVICE] Update failed — camera not found"}
+{"time": "2025-12-02 10:06:16,987", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:16,987", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,988", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,988", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:16,988", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=83e20e5b-7395-4dff-8e85-665dfe5acfd3"}
+{"time": "2025-12-02 10:06:16,988", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=83e20e5b-7395-4dff-8e85-665dfe5acfd3"}
+{"time": "2025-12-02 10:06:16,989", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding feed to camera ID=83e20e5b-7395-4dff-8e85-665dfe5acfd3"}
+{"time": "2025-12-02 10:06:16,989", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=83e20e5b-7395-4dff-8e85-665dfe5acfd3"}
+{"time": "2025-12-02 10:06:16,989", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,989", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Adding feed to camera ID=83e20e5b-7395-4dff-8e85-665dfe5acfd3"}
+{"time": "2025-12-02 10:06:16,989", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_FEED] Added feed ID=0f8b778a-37a7-476c-a8fa-ef01e16f891a to camera ID=83e20e5b-7395-4dff-8e85-665dfe5acfd3"}
+{"time": "2025-12-02 10:06:16,989", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Feed successfully added"}
+{"time": "2025-12-02 10:06:16,990", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Getting camera ID=83e20e5b-7395-4dff-8e85-665dfe5acfd3"}
+{"time": "2025-12-02 10:06:16,990", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=83e20e5b-7395-4dff-8e85-665dfe5acfd3"}
+{"time": "2025-12-02 10:06:16,995", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:16,995", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,996", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:16,996", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:16,996", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=f3dd6647-d319-4e83-9fca-447a4af2af4f"}
+{"time": "2025-12-02 10:06:16,996", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=f3dd6647-d319-4e83-9fca-447a4af2af4f"}
+{"time": "2025-12-02 10:06:16,997", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding feed to camera ID=f3dd6647-d319-4e83-9fca-447a4af2af4f"}
+{"time": "2025-12-02 10:06:16,997", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=f3dd6647-d319-4e83-9fca-447a4af2af4f"}
+{"time": "2025-12-02 10:06:16,997", "level": "WARNING", "module": "app.service.camera_service", "message": "[SERVICE] Feed duplicate protocol+port"}
+{"time": "2025-12-02 10:06:17,001", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:17,002", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:17,002", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:17,002", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:17,002", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=d86a8ef8-cbba-4705-b2cc-9efbb5a8175f"}
+{"time": "2025-12-02 10:06:17,002", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=d86a8ef8-cbba-4705-b2cc-9efbb5a8175f"}
+{"time": "2025-12-02 10:06:17,003", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:17,003", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:17,003", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:17,003", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:17,003", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=2368d922-7954-489e-8fec-477ecb89aa89"}
+{"time": "2025-12-02 10:06:17,003", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=2368d922-7954-489e-8fec-477ecb89aa89"}
+{"time": "2025-12-02 10:06:17,004", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding feed to camera ID=2368d922-7954-489e-8fec-477ecb89aa89"}
+{"time": "2025-12-02 10:06:17,004", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=2368d922-7954-489e-8fec-477ecb89aa89"}
+{"time": "2025-12-02 10:06:17,004", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:17,004", "level": "WARNING", "module": "app.service.camera_service", "message": "[SERVICE] Feed port conflict with another camera"}
+{"time": "2025-12-02 10:06:17,008", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding feed to camera ID=c4d2a19e-d01c-4eec-9e10-81f2dc5e14c5"}
+{"time": "2025-12-02 10:06:17,009", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=c4d2a19e-d01c-4eec-9e10-81f2dc5e14c5"}
+{"time": "2025-12-02 10:06:17,009", "level": "WARNING", "module": "app.service.camera_service", "message": "[SERVICE] Cannot add feed — camera not found"}
+{"time": "2025-12-02 10:06:17,015", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:17,015", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:17,016", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:17,016", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:17,016", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=eb0fe82a-fb43-4166-8faf-a884d462869a"}
+{"time": "2025-12-02 10:06:17,017", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=eb0fe82a-fb43-4166-8faf-a884d462869a"}
+{"time": "2025-12-02 10:06:17,017", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Updating feed ID=02a24360-3a16-407f-b3be-2a3d7d476dc5"}
+{"time": "2025-12-02 10:06:17,017", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Updating feed ID=02a24360-3a16-407f-b3be-2a3d7d476dc5 for camera ID=eb0fe82a-fb43-4166-8faf-a884d462869a"}
+{"time": "2025-12-02 10:06:17,017", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][UPDATE_FEED] Updated feed ID=02a24360-3a16-407f-b3be-2a3d7d476dc5 for camera ID=eb0fe82a-fb43-4166-8faf-a884d462869a"}
+{"time": "2025-12-02 10:06:17,017", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=eb0fe82a-fb43-4166-8faf-a884d462869a"}
+{"time": "2025-12-02 10:06:17,022", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:17,022", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:17,022", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:17,023", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:17,023", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=902540d9-47e8-4820-aef4-aabb19b7d5a8"}
+{"time": "2025-12-02 10:06:17,023", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=902540d9-47e8-4820-aef4-aabb19b7d5a8"}
+{"time": "2025-12-02 10:06:17,024", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Updating feed ID=b5837e55-116a-4ad1-8916-e1903e32ce05"}
+{"time": "2025-12-02 10:06:17,024", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Updating feed ID=b5837e55-116a-4ad1-8916-e1903e32ce05 for camera ID=902540d9-47e8-4820-aef4-aabb19b7d5a8"}
+{"time": "2025-12-02 10:06:17,024", "level": "WARNING", "module": "app.service.camera_service", "message": "[SERVICE] Update feed failed — camera or feed not found"}
+{"time": "2025-12-02 10:06:17,030", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:17,031", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:17,031", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:17,031", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:17,031", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=c95a495f-8566-4fa5-afec-a33fc46f1c83"}
+{"time": "2025-12-02 10:06:17,032", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=c95a495f-8566-4fa5-afec-a33fc46f1c83"}
+{"time": "2025-12-02 10:06:17,032", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Removing feed ID=46175689-64e7-4d33-b17e-a7f7603ff676"}
+{"time": "2025-12-02 10:06:17,032", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Removing feed ID=46175689-64e7-4d33-b17e-a7f7603ff676 from camera ID=c95a495f-8566-4fa5-afec-a33fc46f1c83"}
+{"time": "2025-12-02 10:06:17,032", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][REMOVE_FEED] Removed feed ID=46175689-64e7-4d33-b17e-a7f7603ff676 from camera ID=c95a495f-8566-4fa5-afec-a33fc46f1c83"}
+{"time": "2025-12-02 10:06:17,032", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=c95a495f-8566-4fa5-afec-a33fc46f1c83"}
+{"time": "2025-12-02 10:06:17,033", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Getting camera ID=c95a495f-8566-4fa5-afec-a33fc46f1c83"}
+{"time": "2025-12-02 10:06:17,033", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=c95a495f-8566-4fa5-afec-a33fc46f1c83"}
+{"time": "2025-12-02 10:06:17,037", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:17,037", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:17,038", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:17,038", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:17,038", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=a8bb328f-3610-4292-bd3c-77277fcab332"}
+{"time": "2025-12-02 10:06:17,038", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=a8bb328f-3610-4292-bd3c-77277fcab332"}
+{"time": "2025-12-02 10:06:17,039", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Removing feed ID=5109abfd-6050-4f91-96b1-550d46d0711b"}
+{"time": "2025-12-02 10:06:17,039", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Removing feed ID=5109abfd-6050-4f91-96b1-550d46d0711b from camera ID=a8bb328f-3610-4292-bd3c-77277fcab332"}
+{"time": "2025-12-02 10:06:17,039", "level": "WARNING", "module": "app.service.camera_service", "message": "[SERVICE] Failed to remove feed — not found"}
+{"time": "2025-12-02 10:06:17,044", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:17,045", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:17,045", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:17,045", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:17,046", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=8017d56e-8885-4839-b6c9-c8cacc008d04"}
+{"time": "2025-12-02 10:06:17,046", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=8017d56e-8885-4839-b6c9-c8cacc008d04"}
+{"time": "2025-12-02 10:06:17,046", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Heartbeat received for camera ID=8017d56e-8885-4839-b6c9-c8cacc008d04"}
+{"time": "2025-12-02 10:06:17,047", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=8017d56e-8885-4839-b6c9-c8cacc008d04"}
+{"time": "2025-12-02 10:06:17,047", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Heartbeat updated"}
+{"time": "2025-12-02 10:06:17,047", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Getting camera ID=8017d56e-8885-4839-b6c9-c8cacc008d04"}
+{"time": "2025-12-02 10:06:17,047", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=8017d56e-8885-4839-b6c9-c8cacc008d04"}
+{"time": "2025-12-02 10:06:17,051", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Heartbeat received for camera ID=945c5fc8-041e-41f8-bd5f-7d9979bf5cf1"}
+{"time": "2025-12-02 10:06:17,052", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=945c5fc8-041e-41f8-bd5f-7d9979bf5cf1"}
+{"time": "2025-12-02 10:06:17,052", "level": "WARNING", "module": "app.service.camera_service", "message": "[SERVICE] Heartbeat failed — camera not found"}
+{"time": "2025-12-02 10:06:17,055", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:17,055", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:17,055", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:17,056", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:17,057", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=b520db88-6d08-4031-9a6e-7246a2c531c2"}
+{"time": "2025-12-02 10:06:17,057", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=b520db88-6d08-4031-9a6e-7246a2c531c2"}
+{"time": "2025-12-02 10:06:17,057", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Heartbeat received for camera ID=b520db88-6d08-4031-9a6e-7246a2c531c2"}
+{"time": "2025-12-02 10:06:17,058", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=b520db88-6d08-4031-9a6e-7246a2c531c2"}
+{"time": "2025-12-02 10:06:17,058", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Heartbeat updated"}
+{"time": "2025-12-02 10:06:17,058", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Checking online status for camera ID=b520db88-6d08-4031-9a6e-7246a2c531c2"}
+{"time": "2025-12-02 10:06:17,059", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=b520db88-6d08-4031-9a6e-7246a2c531c2"}
+{"time": "2025-12-02 10:06:17,060", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Camera online — heartbeat OK"}
+{"time": "2025-12-02 10:06:17,061", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Checking online status for camera ID=b520db88-6d08-4031-9a6e-7246a2c531c2"}
+{"time": "2025-12-02 10:06:17,061", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Fetching camera ID=b520db88-6d08-4031-9a6e-7246a2c531c2"}
+{"time": "2025-12-02 10:06:17,061", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Camera offline — heartbeat timeout"}
+{"time": "2025-12-02 10:06:17,064", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:17,065", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:17,065", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:17,065", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:17,065", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=60e0be14-25cc-459b-829a-57e75081fd08"}
+{"time": "2025-12-02 10:06:17,066", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=60e0be14-25cc-459b-829a-57e75081fd08"}
+{"time": "2025-12-02 10:06:17,066", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:17,066", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:17,066", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:17,067", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:17,067", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=0d693937-d943-4d80-824c-c8db69f9ed03"}
+{"time": "2025-12-02 10:06:17,067", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=0d693937-d943-4d80-824c-c8db69f9ed03"}
+{"time": "2025-12-02 10:06:17,068", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Listing cameras with filters"}
+{"time": "2025-12-02 10:06:17,068", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:17,068", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Returning 1 cameras"}
+{"time": "2025-12-02 10:06:17,073", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:17,073", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:17,073", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:17,074", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:17,074", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=a96d01aa-5ce6-4296-940f-1afe0724fcc3"}
+{"time": "2025-12-02 10:06:17,074", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=a96d01aa-5ce6-4296-940f-1afe0724fcc3"}
+{"time": "2025-12-02 10:06:17,074", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:17,075", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:17,075", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:17,075", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:17,075", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=6d5ce5e8-1142-4b1e-aecb-74504a8c9922"}
+{"time": "2025-12-02 10:06:17,076", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=6d5ce5e8-1142-4b1e-aecb-74504a8c9922"}
+{"time": "2025-12-02 10:06:17,076", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:17,076", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:17,077", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:17,077", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:17,078", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=77ba696e-1f57-4f38-a1cc-c3c267aed0ac"}
+{"time": "2025-12-02 10:06:17,079", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=77ba696e-1f57-4f38-a1cc-c3c267aed0ac"}
+{"time": "2025-12-02 10:06:17,079", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:17,079", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:17,080", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:17,080", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:17,080", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=4dbbb578-30af-418d-964f-c2060f2ee82a"}
+{"time": "2025-12-02 10:06:17,080", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=4dbbb578-30af-418d-964f-c2060f2ee82a"}
+{"time": "2025-12-02 10:06:17,081", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Adding new camera"}
+{"time": "2025-12-02 10:06:17,081", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:17,081", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:17,081", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Starting process to add new camera"}
+{"time": "2025-12-02 10:06:17,082", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO][ADD_CAMERA] Added camera ID=7baece63-a322-4f66-9f2c-1bf4c31fc40a"}
+{"time": "2025-12-02 10:06:17,082", "level": "INFO", "module": "app.service.camera_service", "message": "[ADD CAMERA] Camera created with ID=7baece63-a322-4f66-9f2c-1bf4c31fc40a"}
+{"time": "2025-12-02 10:06:17,082", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Listing cameras with filters"}
+{"time": "2025-12-02 10:06:17,082", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:17,082", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Returning 2 cameras"}
+{"time": "2025-12-02 10:06:17,083", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Listing cameras with filters"}
+{"time": "2025-12-02 10:06:17,083", "level": "INFO", "module": "app.repository.memory_repo", "message": "[REPO] Listing all cameras"}
+{"time": "2025-12-02 10:06:17,083", "level": "INFO", "module": "app.service.camera_service", "message": "[SERVICE] Returning 2 cameras"}

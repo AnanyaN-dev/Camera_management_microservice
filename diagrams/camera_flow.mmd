@@ -7,17 +7,17 @@ sequenceDiagram
     participant Repository as InMemory Repo (memory_repo.py)
 
     %% Add Camera
-    %% is a comment in Mermaid diagrams.
     Client->>API: POST /cameras/
     API->>Validator: Validate NewCameraData
     Validator-->>API: Validated payload
     API->>Service: add_camera(data)
     Service->>Repository: add_camera()
-    alt Duplicate IP or Name+Model %%alt acts as if/else block in mermaid
+    alt Duplicate IP or Name+Model
         Service-->>API: ConflictError
         API-->>Client: 409 Conflict
     else Added
         Repository-->>Service: CameraDetails
+        Service->>Service: Auto-update last_known_checkin & last_updated_on %% NEW (heartbeat auto)
         Service-->>API: CameraDetails
         API-->>Client: 200 OK
     end
@@ -57,6 +57,7 @@ sequenceDiagram
         API-->>Client: 404 Not Found
     else Updated
         Repository-->>Service: CameraDetails
+        Service->>Service: Auto-update last_known_checkin & last_updated_on %% NEW (heartbeat auto)
         Service-->>API: Updated Camera
         API-->>Client: 200 OK
     end
@@ -84,7 +85,8 @@ sequenceDiagram
         Service-->>API: NotFoundError
         API-->>Client: 404 Not Found
     else Found
-        Service-->>API: Update last_checkin
+        Service->>Service: Update last_checkin & last_updated_on
+        Service-->>API: Heartbeat OK
         API-->>Client: 200 OK
     end
 
@@ -97,6 +99,7 @@ sequenceDiagram
         Service-->>API: NotFoundError
         API-->>Client: 404 Not Found
     else Exists
+        Service->>Service: Compare last_checkin with HEARTBEAT_TIMEOUT
         Service-->>API: Return online/offline + last_checkin
         API-->>Client: 200 OK
     end

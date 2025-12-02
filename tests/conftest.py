@@ -9,8 +9,8 @@
 
 import pytest
 from fastapi.encoders import jsonable_encoder
-#It is a FastAPI utility function that converts Python objects 
-#into data formats that can be safely stored or returned as JSON.
+# It is a FastAPI utility function that converts Python objects
+# into data formats that can be safely stored or returned as JSON.
 from fastapi.testclient import TestClient
 
 from app.main import app

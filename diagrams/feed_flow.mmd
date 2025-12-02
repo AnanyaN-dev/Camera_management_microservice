@@ -17,13 +17,14 @@ sequenceDiagram
         Service-->>API: NotFoundError
         API-->>Client: 404 Not Found
     else Found
-        Service->>Service: Check duplicate protocol+port+path
+        Service->>Service: Check duplicate protocol+port
         alt Duplicate feed
             Service-->>API: ConflictError
             API-->>Client: 409 Conflict
         else Unique
             Service->>Repository: add_feed()
             Repository-->>Service: VideoFeedInfo
+            Service->>Service: Auto-update last_known_checkin & last_updated_on %% NEW
             Service-->>API: FeedInfo
             API-->>Client: 200 OK
         end
@@ -56,6 +57,7 @@ sequenceDiagram
         API-->>Client: 404 Not Found
     else Updated
         Repository-->>Service: VideoFeedInfo
+        Service->>Service: Auto-update last_known_checkin & last_updated_on %% NEW
         Service-->>API: Updated feed
         API-->>Client: 200 OK
     end
@@ -70,6 +72,7 @@ sequenceDiagram
         API-->>Client: 404 Not Found
     else Removed
         Repository-->>Service: True
+        Service->>Service: Auto-update last_known_checkin & last_updated_on %% NEW
         Service-->>API: Success
         API-->>Client: 200 OK
     end
