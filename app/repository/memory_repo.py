@@ -9,6 +9,10 @@
 # This file contains ONLY data operations (CRUD).
 # No business logic here. That belongs in the service layer.
 
+# This memory repository follows the Dependency Inversion Principle because
+# it depends on an interface, not on the service,
+# and the service depends on the same interface instead of this concrete implementation.
+
 import logging
 from datetime import datetime, timezone
 from typing import Dict, List, Optional
@@ -62,7 +66,11 @@ class SimpleCameraMemoryStorage(CameraRepositoryInterface):
         # data.available_feeds is initialized by Pydantic inside NewCameraData
         for feed in data.available_feeds:
             feed_dict = feed.model_dump()
+            # model_dump() is a Pydantic function.
+            # It converts a Pydantic object into a normal Python dictionary.
 
+            # Create a new VideoFeedInfo object
+            # We are copying the values from feed_dict into this class
             new_feed = VideoFeedInfo(
                 feed_protocol=feed_dict["feed_protocol"],
                 feed_port=feed_dict["feed_port"],
@@ -72,6 +80,8 @@ class SimpleCameraMemoryStorage(CameraRepositoryInterface):
             feeds_with_ids.append(new_feed)
 
         # Build full camera record
+        # The data object is a Pydantic model sent from the API.
+        # I convert it into a normal Python dictionary using model_dump() so I can easily access the values using keys.
         cam_dict = data.model_dump()
 
         camera_record = CameraDetails(
@@ -114,11 +124,11 @@ class SimpleCameraMemoryStorage(CameraRepositoryInterface):
                 f"[REPO][REMOVE_CAMERA] Removed camera ID={camera_id}"
             )  # (ADDED COMMENT)
             return True
-
-        logger.debug(
-            f"[REPO][REMOVE_CAMERA] Camera ID={camera_id} not found."
-        )  # (ADDED COMMENT)
-        return False
+        else:
+            logger.debug(
+                f"[REPO][REMOVE_CAMERA] Camera ID={camera_id} not found."
+            )  # (ADDED COMMENT)
+            return False
 
     # GET CAMERA (READ ONE)
     def get_camera(self, camera_id: UUID) -> Optional[CameraDetails]:
@@ -326,7 +336,7 @@ class SimpleCameraMemoryStorage(CameraRepositoryInterface):
         )  # (ADDED COMMENT)
         return None
 
-    # LIST FEEDS (WITH FILTERS + PAGINATION)
+    # LIST FEEDS (RAW - NO FILTERS, NO PAGINATION)
     def list_feeds(
         self,
         camera_id: UUID,
@@ -337,43 +347,12 @@ class SimpleCameraMemoryStorage(CameraRepositoryInterface):
         page_size: int = 20,
     ) -> List[VideoFeedInfo]:
 
-        logger.info(
-            f"[REPO] Listing feeds for camera ID={camera_id}"
-        )  # (ADDED COMMENT)
+        logger.info(f"[REPO] Listing feeds for camera ID={camera_id}")
 
         cam = self._store.get(camera_id)
         if cam is None:
-            logger.debug(
-                f"[REPO][LIST_FEEDS] Camera ID={camera_id} not found."
-            )  # (ADDED COMMENT)
+            logger.debug(f"[REPO][LIST_FEEDS] Camera ID={camera_id} not found.")
             return []
 
-        feeds = list(cam.available_feeds)
-
-        # Protocol filter
-        if protocol:
-            feeds = [f for f in feeds if f.feed_protocol.lower() == protocol.lower()]
-
-        # Port filter
-        if port is not None:
-            feeds = [f for f in feeds if f.feed_port == port]
-
-        # Free-text search (only feed_path because feed_user removed)
-        if q:
-            q_lower = q.lower()
-            feeds = [f for f in feeds if q_lower in f.feed_path.lower()]
-
-        # Pagination
-        if page <= 0:
-            page = 1
-        if page_size <= 0:
-            page_size = 20
-
-        start = (page - 1) * page_size
-        end = start + page_size
-
-        logger.info(
-            f"[REPO] Returning {len(feeds[start:end])} feeds"
-        )  # (ADDED COMMENT)
-
-        return feeds[start:end]
+        # RETURN ALL FEEDS — no filtering, no pagination
+        return list(cam.available_feeds)
