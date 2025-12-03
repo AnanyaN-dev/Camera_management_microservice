@@ -39,6 +39,8 @@ class CameraRepositoryInterface(ABC):
 
     @abstractmethod
     def get_camera(self, camera_id: UUID) -> Optional[CameraDetails]:
+        # -> this is type hint that tells what the fucntion will return.
+        # Optional means it will either return  the object or None if not found.
         """
         Fetch a camera using its ID.
         Returns None if not found.

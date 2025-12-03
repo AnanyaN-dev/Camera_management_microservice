@@ -9,6 +9,7 @@
 
 # CUSTOM EXCEPTIONS (used in service & repository)
 
+
 # service errors
 class NotFoundError(Exception):
     """Raised when a resource (camera/feed) is not found."""

@@ -18,8 +18,8 @@
 # this is list
 # Pydantic Field() allows:
 # required /mandatory(...) or optional fields
-# max length
-# min length
+# max length ge
+# min length le
 # value range
 # default factory.for mutable obj.
 # metadata for API docs.
@@ -31,6 +31,7 @@ from typing import List, Optional, Sequence
 from uuid import UUID
 
 from pydantic import BaseModel, Field, IPvAnyAddress
+
 
 # NETWORK CONFIGURATION MODEL
 class CameraNetworkInfo(BaseModel):
@@ -48,9 +49,9 @@ class ImageQuality(BaseModel):
 
     brightness: int = Field(
         50,
-        ge=0,#minimun
-        le=100, #maximun
-        description="Brightness level (0-100). Default = 50", #for documentation part for the developers to understand
+        ge=0,  # minimun
+        le=100,  # maximun
+        description="Brightness level (0-100). Default = 50",  # for documentation part for the developers to understand
     )
 
     contrast: int = Field(
@@ -102,6 +103,7 @@ class VideoFeedInfo(VideoFeedSetup):
     # feed_id uniquely identifies each stream.
     feed_id: UUID
 
+
 # NEW CAMERA DATA (REQUEST MODEL)
 class NewCameraData(BaseModel):
     # This is the model expected when the user adds a new camera.
@@ -119,9 +121,7 @@ class NewCameraData(BaseModel):
     network_setup: CameraNetworkInfo
 
     image_settings: ImageQuality = Field(
-        default_factory=lambda: ImageQuality(
-            brightness=50, contrast=50, saturation=50
-        ),
+        default_factory=lambda: ImageQuality(brightness=50, contrast=50, saturation=50),
         description="Initial image settings. Default = (50,50,50).",
     )
 
@@ -130,6 +130,7 @@ class NewCameraData(BaseModel):
         default_factory=list,
         description="List of initial feeds provided by the camera. Can be empty.",
     )
+
 
 # FULL CAMERA DETAILS (RESPONSE MODEL)
 class CameraDetails(NewCameraData):
@@ -154,6 +155,7 @@ class CameraUpdate(BaseModel):
     network_setup: Optional[CameraNetworkInfo] = None
     image_settings: Optional[ImageQuality] = None
 
+
 # FEED UPDATE MODEL
 class FeedUpdate(BaseModel):
     # Optional fields so that PATCH can update selective feed properties.
@@ -167,6 +169,7 @@ class FeedUpdate(BaseModel):
         None, ge=1, le=65535, description="New port number."
     )
     feed_path: Optional[str] = None
+
 
 # CAMERA STATUS RESPONSE
 class CameraState(BaseModel):
