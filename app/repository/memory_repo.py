@@ -135,6 +135,7 @@ class SimpleCameraMemoryStorage(CameraRepositoryInterface):
         logger.info(f"[REPO] Fetching camera ID={camera_id}")  # (ADDED COMMENT)
 
         cam = self._store.get(camera_id)
+        # This retrieves your stored CameraDetails object and stores it in a local variable named cam.
 
         if cam is None:
             logger.debug(

@@ -1,11 +1,12 @@
 # CAMERA SERVICE (BUSINESS LOGIC LAYER)
 # This layer:
-#   - Applies BUSINESS RULES
-#   - Prevents duplicates (IP, names, feeds)
-#   - Filters + Pagination
-#   - Handles heartbeat & status
-# The API layer only *calls* these functions.
+#   Applies BUSINESS RULES
+#   Prevents duplicates (IP, names, feeds)
+#   Filters + Pagination
+#   Handles heartbeat & status
+# The API layer only calls these functions.
 # The Repository layer only stores raw data.
+# Service depends on the Interface not directly on the memeory_repo.py.
 
 
 import logging
@@ -16,14 +17,14 @@ from app.core.config import Config
 from app.core.exceptions import ConflictError, NotFoundError
 from app.models.schemas import (CameraDetails, CameraUpdate, FeedUpdate,
                                 NewCameraData, VideoFeedInfo, VideoFeedSetup)
-from app.repository.memory_repo import SimpleCameraMemoryStorage
+from app.repository.interface import CameraRepositoryInterface
 
 # It creates a logger specific to the current file.
 logger = logging.getLogger(__name__)
 
 
 class CameraService:
-    def __init__(self, repo: SimpleCameraMemoryStorage):
+    def __init__(self, repo: CameraRepositoryInterface):
         self.repo = repo
 
     # ADD CAMERA
@@ -34,6 +35,7 @@ class CameraService:
         # RULE 1: Prevent duplicate camera IP addresses
         for cam in self.repo.list_cameras():
             if cam.network_setup.ip_address == data.network_setup.ip_address:
+                # data is automatically created by FastAPI + Pydantic, based on the request body.
                 logger.warning(
                     f"[ADD CAMERA] Duplicate IP rejected: {data.network_setup.ip_address}"
                 )
@@ -54,7 +56,6 @@ class CameraService:
 
         cam.last_known_checkin = datetime.now(timezone.utc)  # (ADDED HEARTBEAT HERE)
         cam.last_updated_on = datetime.now(timezone.utc)  # (ADDED HEARTBEAT HERE)
-        self.repo._store[cam.camera_id] = cam  # (ADDED HEARTBEAT HERE)
 
         logger.info(
             f"[ADD CAMERA] Camera created with ID={cam.camera_id}"
@@ -94,17 +95,21 @@ class CameraService:
         page_size: int = 20,
     ):
 
-        logger.info("[SERVICE] Listing cameras with filters")  # (ADDED COMMENT)
+        logger.info("[SERVICE] Listing cameras with filters")
 
         import ipaddress
 
         cameras = self.repo.list_cameras()
 
-        # FILTER 1 → model substring
+        # FILTER 1 : model substring
         if model:
-            cameras = [c for c in cameras if model.lower() in c.camera_model.lower()]
+            filtered = []
+            for c in cameras:
+                if model.lower() in c.camera_model.lower():
+                    filtered.append(c)
+            cameras = filtered
 
-        # FILTER 2 → IP RANGE
+        # FILTER 2 : IP RANGE
         if ip_from or ip_to:
             try:
                 ip_from_v = ipaddress.ip_address(ip_from) if ip_from else None
@@ -120,19 +125,25 @@ class CameraService:
                     return False
                 return True
 
-            cameras = [c for c in cameras if in_range(c.network_setup.ip_address)]
+            filtered = []
+            for c in cameras:
+                if in_range(c.network_setup.ip_address):
+                    filtered.append(c)
+            cameras = filtered
 
         # FILTER 3 → online/offline
         if online is not None:
-            logger.info("[SERVICE] Filtering online/offline cameras")  # (ADDED COMMENT)
-            cameras = [c for c in cameras if self.is_online(c.camera_id) == online]
+            filtered = []
+            for c in cameras:
+                if self.is_online(c.camera_id) == online:
+                    filtered.append(c)
+            cameras = filtered
 
         # PAGINATION
         start = (page - 1) * page_size
         end = start + page_size
-        logger.info(
-            f"[SERVICE] Returning {len(cameras[start:end])} cameras"
-        )  # (ADDED COMMENT)
+
+        logger.info(f"[SERVICE] Returning {len(cameras[start:end])} cameras")
         return cameras[start:end]
 
     # UPDATE CAMERA
@@ -148,35 +159,36 @@ class CameraService:
 
         cam.last_known_checkin = datetime.now(timezone.utc)  # (ADDED HEARTBEAT HERE)
         cam.last_updated_on = datetime.now(timezone.utc)  # (ADDED HEARTBEAT HERE)
-        self.repo._store[camera_id] = cam  # (ADDED HEARTBEAT HERE)
 
         return cam
 
-    # ADD FEED
     def add_feed(self, camera_id: UUID, feed_data: VideoFeedSetup) -> VideoFeedInfo:
-        logger.info(
-            f"[SERVICE] Adding feed to camera ID={camera_id}"
-        )  # (ADDED COMMENT)
+        logger.info(f"[SERVICE] Adding feed to camera ID={camera_id}")
 
         cam = self.repo.get_camera(camera_id)
         if cam is None:
-            logger.warning(
-                "[SERVICE] Cannot add feed — camera not found"
-            )  # (ADDED COMMENT)
+            logger.warning("[SERVICE] Cannot add feed — camera not found")
             raise NotFoundError("Camera not found.")
 
-        # RULE 1 → Prevent duplicate (protocol + port)
+        # RULE: Prevent duplicate (protocol + port)
         for f in cam.available_feeds:
             if (
                 f.feed_protocol == feed_data.feed_protocol
                 and f.feed_port == feed_data.feed_port
             ):
-                logger.warning(
-                    "[SERVICE] Feed duplicate protocol+port"
-                )  # (ADDED COMMENT)
+                logger.warning("[SERVICE] Feed duplicate protocol+port")
                 raise ConflictError(
                     "A feed with same protocol and port already exists for this camera."
                 )
+
+        new_feed = self.repo.add_feed(camera_id, feed_data)
+        if new_feed is None:
+            raise NotFoundError("Camera not found while adding feed.")
+
+        cam.last_known_checkin = datetime.now(timezone.utc)
+        cam.last_updated_on = datetime.now(timezone.utc)
+
+        return new_feed
 
     # UPDATE FEED
     def update_feed(
@@ -193,11 +205,10 @@ class CameraService:
 
         cam = self.repo.get_camera(camera_id)
         if cam is None:
-            raise NotFoundError("Camera not found.")  # safety for mypy
+            raise NotFoundError("Camera not found.")  # safety
 
-        cam.last_known_checkin = datetime.now(timezone.utc)  # (ADDED HEARTBEAT HERE)
-        cam.last_updated_on = datetime.now(timezone.utc)  # (ADDED HEARTBEAT HERE)
-        self.repo._store[camera_id] = cam  # (ADDED HEARTBEAT HERE)
+        cam.last_known_checkin = datetime.now(timezone.utc)
+        cam.last_updated_on = datetime.now(timezone.utc)
 
         return updated
 
@@ -214,11 +225,10 @@ class CameraService:
 
         cam = self.repo.get_camera(camera_id)
         if cam is None:
-            raise NotFoundError("Camera not found.")  # safety for mypy
+            raise NotFoundError("Camera not found.")
 
-        cam.last_known_checkin = datetime.now(timezone.utc)  # (ADDED HEARTBEAT HERE)
-        cam.last_updated_on = datetime.now(timezone.utc)  # (ADDED HEARTBEAT HERE)
-        self.repo._store[camera_id] = cam  # (ADDED HEARTBEAT HERE)
+        cam.last_known_checkin = datetime.now(timezone.utc)
+        cam.last_updated_on = datetime.now(timezone.utc)
 
         return True
 
@@ -232,35 +242,41 @@ class CameraService:
         page: int = 1,
         page_size: int = 20,
     ):
-        logger.info(
-            f"[SERVICE] Listing feeds for camera ID={camera_id}"
-        )  # (ADDED COMMENT)
+        logger.info(f"[SERVICE] Listing feeds for camera ID={camera_id}")
 
         cam = self.repo.get_camera(camera_id)
         if cam is None:
-            logger.warning(
-                "[SERVICE] Cannot list feeds — camera not found"
-            )  # (ADDED COMMENT)
+            logger.warning("[SERVICE] Cannot list feeds — camera not found")
             raise NotFoundError("Camera not found.")
 
         feeds = list(cam.available_feeds)
 
         if protocol:
-            feeds = [f for f in feeds if f.feed_protocol.lower() == protocol.lower()]
+            filtered = []
+            for f in feeds:
+                if f.feed_protocol.lower() == protocol.lower():
+                    filtered.append(f)
+            feeds = filtered
 
         if port is not None:
-            feeds = [f for f in feeds if f.feed_port == port]
+            filtered = []
+            for f in feeds:
+                if f.feed_port == port:
+                    filtered.append(f)
+            feeds = filtered
 
         if q:
             q_lower = q.lower()
-            feeds = [f for f in feeds if q_lower in f.feed_path.lower()]
+            filtered = []
+            for f in feeds:
+                if q_lower in f.feed_path.lower():
+                    filtered.append(f)
+            feeds = filtered
 
         start = (page - 1) * page_size
         end = start + page_size
 
-        logger.info(
-            f"[SERVICE] Returning {len(feeds[start:end])} feeds"
-        )  # (ADDED COMMENT)
+        logger.info(f"[SERVICE] Returning {len(feeds[start:end])} feeds")
         return feeds[start:end]
 
     # HEARTBEAT
@@ -278,8 +294,6 @@ class CameraService:
 
         cam.last_known_checkin = datetime.now(timezone.utc)
         cam.last_updated_on = datetime.now(timezone.utc)
-
-        self.repo._store[camera_id] = cam
 
         logger.info("[SERVICE] Heartbeat updated")  # (ADDED COMMENT)
         return {"message": "Heartbeat updated"}
@@ -306,7 +320,6 @@ class CameraService:
         now = datetime.now(timezone.utc)
         diff = now - cam.last_known_checkin
 
-        # explicit logic
         if diff.total_seconds() > Config.HEARTBEAT_TIMEOUT:
             logger.info(
                 "[SERVICE] Camera offline — heartbeat timeout"

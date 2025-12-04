@@ -46,6 +46,7 @@ def get_service():
 # 1. ADD THE CAMERA (POST)
 @router.post("/", response_model=CameraDetails)
 def add_camera(data: NewCameraData, service: CameraService = Depends(get_service)):
+    # data:expect a JSON body and convert it into a Pydantic model named NewCameraData
     # Depends(get_service) this return service that is : service = CameraService(repo)
 
     logger.info("API: Received request to ADD a camera")  # (ADDED COMMENT)

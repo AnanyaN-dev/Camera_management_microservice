@@ -20,7 +20,9 @@ import logging
 import os
 from logging.config import dictConfig
 # (ADDED COMMENT): This import is required to enable log file rotation
-from logging.handlers import RotatingFileHandler  # (ADDED COMMENT)
+from logging.handlers import RotatingFileHandler
+
+# Each time the log file reaches (for example) 5 MB, a new one is created. EX: app.log, app.log.1.
 
 # (ADDED) Ensure logs folder exists
 os.makedirs("logs", exist_ok=True)  # will create /logs folder
