@@ -11,11 +11,13 @@ sequenceDiagram
     API->>Validator: Validate NewCameraData
     Validator-->>API: Validated payload
     API->>Service: add_camera(data)
-    Service->>Repository: add_camera()
+    Service->>Repository: list_cameras()
+    Repository-->>Service: Camera list
     alt Duplicate IP or Name+Model
         Service-->>API: ConflictError
         API-->>Client: 409 Conflict
     else Added
+        Service->>Repository: add_camera(data)
         Repository-->>Service: CameraDetails
         Service->>Service: Auto-update last_known_checkin & last_updated_on %% NEW (heartbeat auto)
         Service-->>API: CameraDetails

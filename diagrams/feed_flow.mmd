@@ -72,6 +72,8 @@ sequenceDiagram
         API-->>Client: 404 Not Found
     else Removed
         Repository-->>Service: True
+        Service->>Repository: get_camera()
+        Repository-->>Service: CameraDetails
         Service->>Service: Auto-update last_known_checkin & last_updated_on %% NEW
         Service-->>API: Success
         API-->>Client: 200 OK
