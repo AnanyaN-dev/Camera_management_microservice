@@ -162,6 +162,7 @@ class CameraService:
 
         return cam
 
+    #ADD FEED
     def add_feed(self, camera_id: UUID, feed_data: VideoFeedSetup) -> VideoFeedInfo:
         logger.info(f"[SERVICE] Adding feed to camera ID={camera_id}")
 
