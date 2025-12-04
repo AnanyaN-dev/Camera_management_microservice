@@ -29,6 +29,10 @@ os.makedirs("logs", exist_ok=True)  # will create /logs folder
 
 LOG_FILE = "logs/app_logs.json"  # (ADDED COMMENT) log file inside /logs folder
 
+# (OPTIONAL) Delete old logs every time the app restarts
+if os.path.exists(LOG_FILE):
+    os.remove(LOG_FILE)
+
 # Formatting and structure for all logs printed by the application.
 LOG_CONFIG = {
     "version": 1,
