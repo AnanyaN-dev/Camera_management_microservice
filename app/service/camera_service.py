@@ -82,7 +82,8 @@ class CameraService:
                 f"[DELETE CAMERA] Camera not found: {camera_id}"
             )  # (ADDED COMMENT)
             raise NotFoundError("Camera not found.")
-        return True
+        else:
+            return True
 
     # LIST CAMERAS + FILTERING + PAGINATION
     def list_cameras(
