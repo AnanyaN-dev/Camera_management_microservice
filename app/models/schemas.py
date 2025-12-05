@@ -124,7 +124,7 @@ class NewCameraData(BaseModel):
         default_factory=lambda: ImageQuality(brightness=50, contrast=50, saturation=50),
         description="Initial image settings. Default = (50,50,50).",
     )
-    # default_factory is used because ImageQuality is a mutable object.
+    # default_factory is used because ImageQuality is a mutable object and is(optional,not added means gets the default value).
     # Without default_factory, a single shared ImageQuality object would be reused for all cameras.
     # default_factory creates a NEW ImageQuality() object every time a camera is created,
     # ensuring each camera has its own independent image_settings (not shared with others).
