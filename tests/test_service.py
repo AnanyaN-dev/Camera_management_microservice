@@ -7,9 +7,8 @@ from app.core.exceptions import ConflictError, NotFoundError
 from app.models.schemas import (CameraNetworkInfo, CameraUpdate, FeedUpdate,
                                 NewCameraData, VideoFeedSetup)
 
+
 # CAMERA TESTS
-
-
 def test_add_camera(service, camera_payload):
     cam = service.add_camera(camera_payload)
     assert cam.camera_id is not None
@@ -78,8 +77,6 @@ def test_update_camera_not_found(service):
 
 
 # FEED TESTS
-
-
 def test_add_feed_success(service, camera_payload):
     cam = service.add_camera(camera_payload)
 
@@ -108,8 +105,7 @@ def test_add_feed_duplicate_same_camera(service, camera_payload):
         )
 
 
-def test_add_feed_duplicate_port_global(service, camera_payload):
-    """Feed port cannot be reused across cameras"""
+def test_add_feed_reuse_port_across_cameras_allowed(service, camera_payload):
     cam1 = service.add_camera(camera_payload)
 
     cam2_payload = camera_payload.model_copy()
@@ -120,12 +116,13 @@ def test_add_feed_duplicate_port_global(service, camera_payload):
 
     cam2 = service.add_camera(cam2_payload)
 
-    # reuse port 554 → should fail
-    with pytest.raises(ConflictError):
-        service.add_feed(
-            cam2.camera_id,
-            VideoFeedSetup(feed_protocol="rtsp", feed_port=554, feed_path="/x"),
-        )
+    # Reuse port 554 → SHOULD NOT raise error
+    feed = service.add_feed(
+        cam2.camera_id,
+        VideoFeedSetup(feed_protocol="rtsp", feed_port=554, feed_path="/x"),
+    )
+
+    assert feed.feed_port == 554
 
 
 def test_add_feed_camera_not_found(service):
@@ -167,8 +164,6 @@ def test_remove_feed_not_found(service, camera_payload):
 
 
 # HEARTBEAT + STATUS
-
-
 def test_heartbeat(service, camera_payload):
     cam = service.add_camera(camera_payload)
 
@@ -187,19 +182,7 @@ def test_heartbeat_not_found(service):
         service.heartbeat(uuid4())
 
 
-def test_is_online(service, camera_payload):
-    cam = service.add_camera(camera_payload)
-
-    service.heartbeat(cam.camera_id)
-    assert service.is_online(cam.camera_id) is True
-
-    cam.last_known_checkin = datetime.now(timezone.utc) - timedelta(minutes=10)
-    assert service.is_online(cam.camera_id) is False
-
-
 # FILTERS + PAGINATION
-
-
 def test_list_cameras_filter_model(service, camera_payload):
     cam1 = service.add_camera(camera_payload)
 
@@ -231,3 +214,55 @@ def test_list_cameras_pagination(service, camera_payload):
 
     assert len(page1) == 2
     assert len(page2) == 2
+
+
+def test_list_cameras_filter_ip_range(service, camera_payload):
+    # Camera 1 inside range
+    cam1 = camera_payload.model_copy()
+    cam1.camera_name = "Cam1"
+    cam1.camera_model = "M1"
+    cam1.network_setup = CameraNetworkInfo(ip_address="192.168.1.10")
+    cam1.available_feeds = []
+    c1 = service.add_camera(cam1)
+
+    # Camera 2 inside range
+    cam2 = camera_payload.model_copy()
+    cam2.camera_name = "Cam2"
+    cam2.camera_model = "M2"
+    cam2.network_setup = CameraNetworkInfo(ip_address="192.168.1.20")
+    cam2.available_feeds = []
+    c2 = service.add_camera(cam2)
+
+    # Camera 3 outside range
+    cam3 = camera_payload.model_copy()
+    cam3.camera_name = "Cam3"
+    cam3.camera_model = "M3"
+    cam3.network_setup = CameraNetworkInfo(ip_address="192.168.1.50")
+    cam3.available_feeds = []
+    service.add_camera(cam3)
+
+    result = service.list_cameras(ip_from="192.168.1.10", ip_to="192.168.1.25")
+
+    assert len(result) == 2
+    assert {c.camera_id for c in result} == {c1.camera_id, c2.camera_id}
+
+
+# STATUS:
+def test_list_cameras_filter_online(service, camera_payload):
+    # Camera 1 (online)
+    cam1 = service.add_camera(camera_payload)
+    service.heartbeat(cam1.camera_id)
+
+    # Camera 2 (offline)
+    cam2_payload = camera_payload.model_copy()
+    cam2_payload.camera_name = "Other"
+    cam2_payload.camera_model = "OtherModel"
+    cam2_payload.network_setup = CameraNetworkInfo(ip_address="10.0.0.2")
+    cam2 = service.add_camera(cam2_payload)
+    cam2.last_known_checkin = None
+
+    online_list = service.list_cameras(online=True)
+    offline_list = service.list_cameras(online=False)
+
+    assert cam1.camera_id in {c.camera_id for c in online_list}
+    assert cam2.camera_id in {c.camera_id for c in offline_list}

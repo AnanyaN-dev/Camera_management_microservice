@@ -51,6 +51,11 @@ def test_update_camera_api(client, camera_payload_json):
     assert resp.json()["camera_name"] == "UpdatedAPI"
 
 
+def test_update_camera_api_not_found(client):
+    resp = client.patch(f"/cameras/{uuid4()}", json={"camera_name": "X"})
+    assert resp.status_code == 404
+
+
 # LIST CAMERAS (GET)
 def test_list_cameras_api(client, camera_payload_json):
     # Create three cameras with different IP addresses
@@ -87,6 +92,31 @@ def test_list_cameras_filter_model_api(client, camera_payload_json):
     assert data[0]["camera_model"] == "SpecialModel"
 
 
+# LIST CAMERAS- IP RANGE FILTER.
+def test_list_cameras_filter_ip_range_api(client, camera_payload_json):
+    payload1 = camera_payload_json.copy()
+    payload1["camera_name"] = "CamA"
+    payload1["network_setup"]["ip_address"] = "192.168.0.10"
+    client.post("/cameras/", json=payload1)
+
+    payload2 = camera_payload_json.copy()
+    payload2["camera_name"] = "CamB"
+    payload2["network_setup"]["ip_address"] = "192.168.0.20"
+    client.post("/cameras/", json=payload2)
+
+    # Filter from 192.168.0.15 to 192.168.0.25 → should return only CamB
+    resp = client.get("/cameras/?ip_from=192.168.0.15&ip_to=192.168.0.25")
+    assert resp.status_code == 200
+
+    data = resp.json()
+    assert len(data) == 1
+    assert data[0]["network_setup"]["ip_address"] == "192.168.0.20"
+
+
+# LIST CAMERAS- ONLINE/OFFLINE :
+from datetime import datetime, timedelta, timezone
+
+
 # ADD FEED
 def test_add_feed_api(client, camera_payload_json):
     created = client.post("/cameras/", json=camera_payload_json).json()
@@ -100,6 +130,25 @@ def test_add_feed_api(client, camera_payload_json):
     body = resp.json()
     assert "feed" in body
     assert body["feed"] is not None
+
+
+def test_add_feed_api_duplicate(client, camera_payload_json):
+    created = client.post("/cameras/", json=camera_payload_json).json()
+    cid = created["camera_id"]
+
+    # Same protocol + port as existing feed
+    f = camera_payload_json["available_feeds"][0]
+
+    resp = client.post(
+        f"/cameras/{cid}/feeds",
+        json={
+            "feed_protocol": f["feed_protocol"],
+            "feed_port": f["feed_port"],
+            "feed_path": "/dup",
+        },
+    )
+
+    assert resp.status_code == 409
 
 
 # LIST FEEDS
@@ -160,6 +209,35 @@ def test_list_feeds_filter_api(client, camera_payload_json):
     feeds = resp.json()
     assert len(feeds) == 1
     assert feeds[0]["feed_port"] == 1234
+
+
+# LIST FEEDS-PAGINATION:
+def test_list_feeds_pagination_api(client, camera_payload_json):
+    created = client.post("/cameras/", json=camera_payload_json).json()
+    cid = created["camera_id"]
+
+    # Add 4 feeds
+    for i in range(4):
+        client.post(
+            f"/cameras/{cid}/feeds",
+            json={
+                "feed_protocol": "rtsp",
+                "feed_port": 8000 + i,
+                "feed_path": f"/f{i}",
+            },
+        )
+
+    resp_page1 = client.get(f"/cameras/{cid}/feeds?page=1&page_size=2")
+    resp_page2 = client.get(f"/cameras/{cid}/feeds?page=2&page_size=2")
+
+    assert resp_page1.status_code == 200
+    assert resp_page2.status_code == 200
+
+    page1 = resp_page1.json()
+    page2 = resp_page2.json()
+
+    assert len(page1) == 2
+    assert len(page2) == 2
 
 
 # HEARTBEAT AND STATUS

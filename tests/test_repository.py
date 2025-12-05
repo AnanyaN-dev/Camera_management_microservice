@@ -102,6 +102,21 @@ def test_remove_feed_not_found(repo, camera_payload):
     assert repo.remove_feed(cam.camera_id, uuid4()) is False
 
 
+def test_get_feed_success(repo, camera_payload):
+    cam = repo.add_camera(camera_payload)
+    feed = cam.available_feeds[0]
+
+    retrieved = repo.get_feed(cam.camera_id, feed.feed_id)
+    assert retrieved is not None
+    assert retrieved.feed_id == feed.feed_id
+
+
+def test_get_feed_not_found(repo, camera_payload):
+    cam = repo.add_camera(camera_payload)
+
+    assert repo.get_feed(cam.camera_id, uuid4()) is None
+
+
 from uuid import uuid4
 
 from app.models.schemas import CameraUpdate, FeedUpdate, VideoFeedSetup
