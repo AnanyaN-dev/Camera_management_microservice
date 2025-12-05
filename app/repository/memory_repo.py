@@ -98,7 +98,7 @@ class SimpleCameraMemoryStorage(CameraRepositoryInterface):
 
         # Save inside the dictionary
         self._store[camera_id] = camera_record
-
+        
         logger.info(
             f"[REPO][ADD_CAMERA] Added camera ID={camera_id}"
         )  # (ADDED COMMENT)

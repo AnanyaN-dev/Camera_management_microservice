@@ -159,8 +159,6 @@ class CameraService:
             raise NotFoundError("Camera not found.")
 
         cam.last_known_checkin = datetime.now(timezone.utc)  # (ADDED HEARTBEAT HERE)
-        cam.last_updated_on = datetime.now(timezone.utc)  # (ADDED HEARTBEAT HERE)
-
         return cam
 
     # ADD FEED
@@ -188,7 +186,6 @@ class CameraService:
             raise NotFoundError("Camera not found while adding feed.")
 
         cam.last_known_checkin = datetime.now(timezone.utc)
-        cam.last_updated_on = datetime.now(timezone.utc)
 
         return new_feed
 
@@ -210,7 +207,6 @@ class CameraService:
             raise NotFoundError("Camera not found.")  # safety
 
         cam.last_known_checkin = datetime.now(timezone.utc)
-        cam.last_updated_on = datetime.now(timezone.utc)
 
         return updated
 
@@ -230,7 +226,6 @@ class CameraService:
             raise NotFoundError("Camera not found.")
 
         cam.last_known_checkin = datetime.now(timezone.utc)
-        cam.last_updated_on = datetime.now(timezone.utc)
 
         return True
 
