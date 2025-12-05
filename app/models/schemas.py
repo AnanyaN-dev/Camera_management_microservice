@@ -124,6 +124,11 @@ class NewCameraData(BaseModel):
         default_factory=lambda: ImageQuality(brightness=50, contrast=50, saturation=50),
         description="Initial image settings. Default = (50,50,50).",
     )
+    # default_factory is used because ImageQuality is a mutable object.
+    # Without default_factory, a single shared ImageQuality object would be reused for all cameras.
+    # default_factory creates a NEW ImageQuality() object every time a camera is created,
+    # ensuring each camera has its own independent image_settings (not shared with others).
+    # If the user does not provide image_settings, this default object is used.
 
     # available_feeds is a list because a camera may have multiple streams.
     available_feeds: Sequence[VideoFeedSetup] = Field(
