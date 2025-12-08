@@ -8,10 +8,21 @@ Have written unit tests to test the functionalities using pytest.
 
 ## Requirements
 ```
-Python 3.14.
+Python version : 3.14.
+
+pip install fastapi
+pip install uvicorn
+
 Install dependencies:
 pip install -r requirements.txt AND 
-Used mypy , black and isort code formatters for clean coding practices.
+
+Code quality tools used:
+ mypy  (static type checking)
+ black (code formatting)
+ isort (import sorting)
+
+Install Unit Testing Framework:
+pip install pytest
 ```
 
 ## Project Structure
