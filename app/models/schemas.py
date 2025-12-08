@@ -129,10 +129,12 @@ class NewCameraData(BaseModel):
     # default_factory creates a NEW ImageQuality() object every time a camera is created,
     # ensuring each camera has its own independent image_settings (not shared with others).
     # If the user does not provide image_settings, this default object is used.
+    #this a func of pydantic
 
     # available_feeds is a list because a camera may have multiple streams.
     available_feeds: Sequence[VideoFeedSetup] = Field(
         default_factory=list,
+        #If the user does not send any feeds, create a NEW empty list as the default value.
         description="List of initial feeds provided by the camera. Can be empty.",
     )
 
