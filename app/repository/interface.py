@@ -20,8 +20,6 @@ class CameraRepositoryInterface(ABC):
         - in-memory dictionary (like our mock DB)
         - SQL database
         - NoSQL database
-        - message queue
-        - cloud storage
     """
 
     @abstractmethod
