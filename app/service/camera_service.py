@@ -114,18 +114,24 @@ class CameraService:
         if ip_from or ip_to:
             try:
                 ip_from_v = ipaddress.ip_address(ip_from) if ip_from else None
+                #Convert user's ip_from into an IP object.
                 ip_to_v = ipaddress.ip_address(ip_to) if ip_to else None
             except ValueError:
                 raise ConflictError("Invalid IP format.")
 
             def in_range(ip):
                 ip_obj = ipaddress.ip_address(ip)
+                #(Where ip = c.network_setup.ip_address) stored cameras ip.
                 if ip_from_v and ip_obj < ip_from_v:
-                    return False
+                #If the user provided a lower-bound IP (ip_from),and the camera's IP is less than that lower bound,then this camera is not in range.
+                #lower : camera_ip >= ip_from_v
+                #greater : camera_ip <= ip_to_v
+                   return False
                 if ip_to_v and ip_obj > ip_to_v:
                     return False
                 return True
 
+            #loop through all the cameras
             filtered = []
             for c in cameras:
                 if in_range(c.network_setup.ip_address):
