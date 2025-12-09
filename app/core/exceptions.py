@@ -1,8 +1,8 @@
 # This file contains all custom exceptions + global FastAPI exception handlers.
 # This file is for:
-# → To separate business logic errors (like "Camera not found") from Python's internal errors.
-# → To provide clean JSON error responses in the API.
-#
+# To separate business logic errors (like "Camera not found") from Python's internal errors.
+# To provide clean JSON error responses in the API.
+
 # The API layer and service layer never return "raw errors".
 # Instead, they raise these custom exceptions, and FastAPI converts them
 # into user-friendly JSON using the handlers below.

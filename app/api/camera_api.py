@@ -1,7 +1,7 @@
 # depends coz: To inject the service class (CameraService) automatically into routes
 # Defines all HTTP endpoints for cameras and feeds.
 # Converts service exceptions into HTTP errors.
-import logging  # (ADDED COMMENT) importing logging
+import logging  #importing logging
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, status
@@ -49,23 +49,24 @@ def add_camera(data: NewCameraData, service: CameraService = Depends(get_service
     # data:expect a JSON body and convert it into a Pydantic model named NewCameraData
     # Depends(get_service) this return service that is : service = CameraService(repo)
 
-    logger.info("API: Received request to ADD a camera")  # (ADDED COMMENT)
+    logger.info("API: Received request to ADD a camera") 
 
     try:
         cam = service.add_camera(data)
         logger.info(
             f"API: Camera successfully added with ID={cam.camera_id}"
-        )  # (ADDED COMMENT)
+        )  
         return cam
     except ConflictError as e:
         logger.warning(
-            f"API: Conflict while adding camera → {str(e)}"
-        )  # (ADDED COMMENT)
+            f"API: Conflict while adding camera : {str(e)}"
+            #If ConflictError happens, capture the error message inside variable e.
+        )
         raise HTTPException(status_code=409, detail=str(e))
     except Exception as e:
         logger.error(
-            f"API: Unexpected error while adding camera → {str(e)}"
-        )  # (ADDED COMMENT)
+            f"API: Unexpected error while adding camera : {str(e)}"
+        ) 
         raise HTTPException(status_code=400, detail=str(e))
 
 
@@ -77,7 +78,7 @@ def get_camera(camera_id: UUID, service: CameraService = Depends(get_service)):
         cam = service.get_camera(camera_id)
         logger.info(
             f"API: Successfully fetched camera ID={camera_id}"
-        )  # (ADDED COMMENT)
+        ) 
         return cam
     except NotFoundError as e:
         logger.warning(f"API: Camera ID={camera_id} not found")  # (ADDED COMMENT)
@@ -92,12 +93,12 @@ def delete_camera(camera_id: UUID, service: CameraService = Depends(get_service)
         service.remove_camera(camera_id)
         logger.info(
             f"API: Successfully deleted camera ID={camera_id}"
-        )  # (ADDED COMMENT)
+        ) 
         return {"message": "Camera removed successfully"}
     except NotFoundError as e:
         logger.warning(
             f"API: Cannot delete, camera ID={camera_id} not found"
-        )  # (ADDED COMMENT)
+        ) 
         raise HTTPException(status_code=404, detail=str(e))
 
 
