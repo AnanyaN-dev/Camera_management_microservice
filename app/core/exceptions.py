@@ -43,6 +43,7 @@ def register_error_handlers(app: FastAPI):
     """
 
     # NotFoundError → 404
+    #app.exception_handler(ErrorType) This is fast api's inbuilt method 
     @app.exception_handler(NotFoundError)
     async def not_found_handler(request: Request, exc: NotFoundError):
         return JSONResponse(
